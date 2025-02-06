@@ -1,3 +1,21 @@
+* {
+	box-sizing: border-box;
+}
+
 header {
-color: #ffea00;
-background-color: #0066ff;
+	color: #ffea00;
+}
+
+body {
+	background-color: #0066ff;
+}
+
+button {
+	border: none;
+	background-color: white;
+}
+
+button:hover {
+	background-color: #f0dd0a;
+	color: #0066ff;
+}
