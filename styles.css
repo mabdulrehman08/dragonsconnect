@@ -15,7 +15,7 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+	font-family: ;
 }
 nav{
 	width: 100%;
@@ -89,6 +89,7 @@ button:hover{
 	color: #5b6d92;
 	font-size: 5rem;
 	padding-bottom: 30px;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .home-container p{
