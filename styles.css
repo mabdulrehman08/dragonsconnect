@@ -15,7 +15,6 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-	font-family: ;
 }
 nav{
 	width: 100%;
@@ -82,7 +81,7 @@ button:hover{
 .home-container{
 	align-items: center;
 	width: 600px;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .home-container h1{
@@ -97,7 +96,7 @@ button:hover{
 	text-align: center;
 	color: #5b6d92;
 	padding-bottom: 20px;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .wrap {
