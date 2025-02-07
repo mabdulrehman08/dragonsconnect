@@ -2,7 +2,13 @@
 	box-sizing: border-box;
 }
 
-header {
+h1 {
+	text-align: left;
+	color: #5b6d92;
+}
+
+h2 {
+	text-align: center;
 	color: #5b6d92;
 }
 
