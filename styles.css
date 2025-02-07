@@ -52,18 +52,6 @@ li a:hover{
 .active{
 	background-color: var(--text-color--);
 }
-
-h1 {
-	text-align: left;
-	color: #5b6d92;
-}
-
-h2 {
-	text-align: center;
-	color: #5b6d92;
-}
-
-
 button {
 	padding: 15px;
     border-radius: 10px;
@@ -79,6 +67,31 @@ button {
 button:hover{
 	background-color: #D18266;
 	color: #364042;
+}
+
+.home-content{
+	padding: 2rem 5rem 2rem 5rem;
+	display: flex;
+	align-items: center;
+	height: 70vh;
+}
+
+.home-container{
+	align-items: center;
+	width: 600px;
+}
+
+.home-container h1{
+	text-align: center;
+	color: #5b6d92;
+	font-size: 5rem;
+	padding-bottom: 30px;
+}
+
+.home-container p{
+	text-align: center;
+	color: #5b6d92;
+	padding-bottom: 20px;
 }
 
 .wrap {
