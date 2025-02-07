@@ -1,10 +1,12 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,600,300");
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 *{
 	margin: 0;
 	padding: auto;
 	box-sizing: border-box;
-	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-family: "Space Mono", serif;
+	font-weight: 400;
+  	font-style: normal;
 }
 
 
@@ -46,11 +48,11 @@ li a{
 }
 
 li a:hover{
-	background-color: #efeee5;
+	background-color: transparent;
 }
 
 .active{
-	background-color: #efeee5;
+	background-color: transparent;
 }
 
 button {
