@@ -14,9 +14,10 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	color:#efeee5;
 	font-family: "Space Mono", serif;
 	font-weight: 400;
-  	font-style: normal;
+  	font-style: bold;
 }
 nav{
 	width: 100%;
@@ -35,6 +36,7 @@ ul {
 	list-style: none;
 	display: flex;
 	gap: 3rem;
+	color:#efeee5;
 	font-family: "Space Mono", serif;
 	font-weight: 400;
   	font-style: bold;
@@ -50,7 +52,7 @@ li a{
 	transition: 0.6s;
 	font-family: "Space Mono", serif;
 	font-weight: 400;
-  	font-style: italic;
+  	font-style: bold;
 }
 
 li a:hover{
@@ -66,12 +68,14 @@ button {
 	padding: 10px 15px;
     border-radius: 5px;
     color: #efeee5;
-    cursor: pointer;
 	font-size: 18px;
 	font-weight: 600;
     background: transparent;
     font-size: 18px;
 	transition: 0.6s;
+	font-family: "Space Mono", serif;
+	font-weight: 400;
+  	font-style: bold;
 }
 
 button:hover{
