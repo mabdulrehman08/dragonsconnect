@@ -96,6 +96,11 @@ button:hover{
 	width: 600px;
 }
 
+.login-sec{
+	text-decoration: none;
+
+}
+
 .home-container h1{
 	text-align: center;
 	color: #5b6d92;
