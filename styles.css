@@ -96,9 +96,8 @@ button:hover{
 	width: 600px;
 }
 
-.login-sec{
+.login-sec a{
 	text-decoration: none;
-
 }
 
 .home-container h1{
