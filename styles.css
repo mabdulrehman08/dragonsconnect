@@ -65,6 +65,7 @@ li a:hover{
 }
 
 button {
+	border: transparent;
 	padding: 10px 15px;
     border-radius: 5px;
     color: #efeee5;
