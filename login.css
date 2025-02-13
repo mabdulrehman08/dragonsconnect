@@ -7,7 +7,6 @@ body {
     justify-content: center;
     line-height: 1.5;
     min-height: 100vh;
-    background: #F0E2D2;
     flex-direction: column;
     margin: 0;
     font-family: "Space Mono", serif;
@@ -21,7 +20,7 @@ body {
 }
 
 .main {
-    background-color: transparent;
+    background: #F0E2D2;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
@@ -38,13 +37,17 @@ h2 {
     color: #efeee5;
 }
 
+h2 {
+    color: #efeee5;
+}
+
 label {
     display: block;
     width: 100%;
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #efeee5;
+    color: transparent;
     font-weight: bold;
 }
 
