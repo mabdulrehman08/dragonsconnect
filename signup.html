@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+@import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 <html lang="en">
 
 <head>
@@ -7,32 +8,46 @@
     <title>HTML Registration Form</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: #F0E2D2;
+            justify-content: center;
+            line-height: 1.5;
+            min-height: 100vh;
+            flex-direction: column;
+            margin: 0;
+            font-family: "Space Mono", serif;
+            font-weight: 400;
+            font-style: bold;
+            text-decoration: none;
+            background: url("back.jpg");
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
         }
 
         .main {
-            background-color: #efeee5;
+            background: #efeee5;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            padding: 20px;
-            width: 300px;
+            padding: 10px 20px;
+            position: fixed;
+            top: 160px; right: 30px;
+            transition: transform 0.2s;
+            width: 500px;
+            text-align: center;
         }
 
         .main h2 {
-            color: #5b6d92;
+            color: #364042;
             margin-bottom: 20px;
         }
 
         label {
             display: block;
+            width: 100%;
+            margin-top: 10px;
             margin-bottom: 5px;
+            text-align: left;
             color: #364042;
             font-weight: bold;
         }
@@ -41,24 +56,35 @@
         input[type="email"],
         input[type="password"],
         select {
+            display: block;
             width: 100%;
             margin-bottom: 15px;
             padding: 10px;
             box-sizing: border-box;
             border: 1px solid #F0E2D2;
             border-radius: 5px;
+            font-family: "Space Mono", serif;
         }
 
         button[type="submit"] {
             padding: 15px;
             border-radius: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
             border: none;
-            background-color: #D18266;
             color: white;
             cursor: pointer;
+            background-color: #D18266;
             width: 100%;
+            font-family: "Space Mono", serif;
             font-size: 16px;
         }
+        .wrap {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
     </style>
 </head>
 
