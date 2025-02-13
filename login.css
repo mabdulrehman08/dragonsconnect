@@ -20,7 +20,7 @@ body {
 }
 
 .main {
-    background: #F0E2D2;
+    background: transparent;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
@@ -37,7 +37,7 @@ h2 {
     color: #efeee5;
 }
 
-h2 {
+h3 {
     color: #efeee5;
 }
 
@@ -71,6 +71,7 @@ button {
     cursor: pointer;
     background-color: #D18266;
     width: 100%;
+    font-family: "Space Mono", serif;
     font-size: 16px;
 }
 
