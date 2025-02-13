@@ -31,11 +31,11 @@ body {
 }
 
 h1 {
-    color: #5b6d92
+    color: #efeee5;
 }
 
 h2 {
-    color: #5b6d92;
+    color: #efeee5;
 }
 
 label {
@@ -44,7 +44,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #364042;
+    color: #efeee5;
     font-weight: bold;
 }
 
