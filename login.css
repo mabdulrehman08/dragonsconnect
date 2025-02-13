@@ -47,7 +47,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: transparent;
+    color: #efeee5;
     font-weight: bold;
 }
 
@@ -59,6 +59,7 @@ input {
     box-sizing: border-box;
     border: 1px solid #F0E2D2;
     border-radius: 5px;
+    font-family: "Space Mono", serif;
 }
 
 button {
