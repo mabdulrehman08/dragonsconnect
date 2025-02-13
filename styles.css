@@ -93,7 +93,8 @@ footer {
 }
 
 footer button {
-	border-radius: 0px;
+	border-radius: 5px;
+	padding: 10px 15px;
 }
 
 .home-content{
