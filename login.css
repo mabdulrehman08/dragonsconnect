@@ -26,19 +26,19 @@ body {
     padding: 10px 20px;
     transition: transform 0.2s;
     width: 500px;
-    text-align: right;
+    text-align: center;
 }
 
 h1 {
-    color: #efeee5;
+    color: #364042;
 }
 
 h2 {
-    color: #efeee5;
+    color: #364042;
 }
 
 h3 {
-    color: #efeee5;
+    color: #364042;
 }
 
 label {
