@@ -111,6 +111,11 @@ footer button {
 
 .login-sec a{
 	text-decoration: none;
+	color: #efeef5;
+}
+
+.login-sec a:hover{
+	background-color: transparent;
 	color: black;
 }
 
