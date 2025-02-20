@@ -32,6 +32,10 @@
           function loadProfile() {
               const profileData = JSON.parse(localStorage.getItem("userProfile")) || {};
               updateProfileDisplay(profileData);
+
+              if (profileData.hobbies) document.getElementById("hobbies").value = profileData.hobbies[0] || "";
+              if (profileData.interests) document.getElementById("interests").value = profileData.interests[0] || "";
+              if (profileData.clubs) document.getElementById("clubs").value = profileData.clubs[0] || "";
           }
 
           function updateProfileDisplay(data) {
