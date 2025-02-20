@@ -6,16 +6,37 @@
   <title>User Profile - Dragon Connect</title>
   <link rel="stylesheet" href="styles.css"> 
   <style>
-      .profile-display-container {
-          position: absolute;
-          right: 20px;
-          top: 50px;
+      body {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+          background-color: #f0f0f0;
+      }
+
+      .profile-container {
+          text-align: center;
+      }
+
+      .profile-modification {
           background-color: #001f3f; /* Dark blue */
           color: white;
           padding: 20px;
           border-radius: 12px;
           box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          max-width: 300px;
+          max-width: 400px;
+          margin-bottom: 20px;
+      }
+
+      .profile-display-container {
+          background-color: #001f3f; /* Dark blue */
+          color: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          max-width: 400px;
       }
   </style>
   <script>
@@ -82,23 +103,25 @@
 </head>
 <body>
 
-  <section class="profile-modification">
-    <h2>Modify Your Profile</h2>
-    <form id="profileForm">
-        <label for="hobbies">Hobbies:</label>
-        <select id="hobbies" name="hobbies"></select><br>
+  <div class="profile-container">
+    <section class="profile-modification">
+      <h2>Modify Your Profile</h2>
+      <form id="profileForm">
+          <label for="hobbies">Hobbies:</label>
+          <select id="hobbies" name="hobbies"></select><br>
 
-        <label for="interests">Academic Interests:</label>
-        <select id="interests" name="interests"></select><br>
+          <label for="interests">Academic Interests:</label>
+          <select id="interests" name="interests"></select><br>
 
-        <label for="clubs">Club Involvement:</label>
-        <select id="clubs" name="clubs"></select><br>
+          <label for="clubs">Club Involvement:</label>
+          <select id="clubs" name="clubs"></select><br>
 
-        <button type="submit">Save Profile</button>
-    </form>
-  </section>
+          <button type="submit">Save Profile</button>
+      </form>
+    </section>
 
-  <div id="profileDisplay" class="profile-display-container"></div>
+    <div id="profileDisplay" class="profile-display-container"></div>
+  </div>
 
   <script src="app.js"></script>
 </body>
