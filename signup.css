@@ -65,13 +65,18 @@ button[type="submit"] {
     margin-top: 15px;
     margin-bottom: 15px;
     border: none;
-    color: white;
+    color: black;
     cursor: pointer;
     background-color: #FFDF00;
     width: 100%;
     font-family: "Space Mono", serif;
     font-size: 16px;
 }
+button:hover{
+    font-size: 18px;
+    margin-bottom: 13px;
+}
+color: white
 .wrap {
     display: flex;
     justify-content: center;
