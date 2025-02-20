@@ -5,6 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>User Profile - Dragon Connect</title>
   <link rel="stylesheet" href="styles.css"> 
+  <style>
+      .profile-display-container {
+          position: absolute;
+          right: 20px;
+          top: 50px;
+          background-color: #001f3f; /* Dark blue */
+          color: white;
+          padding: 20px;
+          border-radius: 12px;
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+          max-width: 300px;
+      }
+  </style>
   <script>
       document.addEventListener("DOMContentLoaded", function () {
           const profileForm = document.getElementById("profileForm");
@@ -83,8 +96,9 @@
 
         <button type="submit">Save Profile</button>
     </form>
-    <div id="profileDisplay"></div>
   </section>
+
+  <div id="profileDisplay" class="profile-display-container"></div>
 
   <script src="app.js"></script>
 </body>
