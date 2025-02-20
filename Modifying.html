@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile - Dragon Connect</title>
+  <link rel="stylesheet" href="styles.css"> 
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+          const profileForm = document.getElementById("profileForm");
+          const profileDisplay = document.getElementById("profileDisplay");
+
+          const hobbiesList = [
+              "Painting", "Coding", "Basketball", "Photography", "Writing", "Swimming", "Music", "Hiking", "Cooking", "Gaming", 
+              "Reading", "Dancing", "Traveling", "Yoga", "Cycling", "Robotics", "Chess", "Volunteering", "Running", "Woodworking"
+          ];
+
+          const clubsList = [
+              "Aero SAE", "DUCOM French Club", "Drexel University Club Sports", "Club Golf", "Drexel Men's Club Volleyball", "Drexel Women's Club Volleyball"
+          ];
+
+          function populateSelect(id, options) {
+              const select = document.getElementById(id);
+              options.forEach(option => {
+                  const opt = document.createElement("option");
+                  opt.value = option;
+                  opt.textContent = option;
+                  select.appendChild(opt);
+              });
+          }
+
+          function loadProfile() {
+              const profileData = JSON.parse(localStorage.getItem("userProfile")) || {};
+              updateProfileDisplay(profileData);
+          }
+
+          function updateProfileDisplay(data) {
+              const displayItems = (items) => items && items.length > 0 ? items.map(item => `<div class="tag">${item}</div>`).join(" ") : "Not specified";
+
+              profileDisplay.innerHTML = `
+                  <h3>Profile Information</h3>
+                  <p><strong>Hobbies:</strong> ${displayItems(data.hobbies)}</p>
+                  <p><strong>Academic Interests:</strong> ${displayItems(data.interests)}</p>
+                  <p><strong>Club Involvement:</strong> ${displayItems(data.clubs)}</p>
+              `;
+          }
+
+          profileForm.addEventListener("submit", function (event) {
+              event.preventDefault();
+              const profileData = {
+                  hobbies: Array.from(document.getElementById("hobbies").selectedOptions).map(opt => opt.value),
+                  interests: Array.from(document.getElementById("interests").selectedOptions).map(opt => opt.value),
+                  clubs: Array.from(document.getElementById("clubs").selectedOptions).map(opt => opt.value),
+              };
+              localStorage.setItem("userProfile", JSON.stringify(profileData));
+              updateProfileDisplay(profileData);
+          });
+
+          populateSelect("hobbies", hobbiesList);
+          populateSelect("interests", hobbiesList);
+          populateSelect("clubs", clubsList);
+          loadProfile();
+      });
+  </script>
+</head>
+<body>
+
+  <section class="profile-modification">
+    <h2>Modify Your Profile</h2>
+    <form id="profileForm">
+        <label for="hobbies">Hobbies:</label>
+        <select id="hobbies" name="hobbies" multiple></select><br>
+
+        <label for="interests">Academic Interests:</label>
+        <select id="interests" name="interests" multiple></select><br>
+
+        <label for="clubs">Club Involvement:</label>
+        <select id="clubs" name="clubs" multiple></select><br>
+
+        <button type="submit">Save Profile</button>
+    </form>
+    <div id="profileDisplay"></div>
+  </section>
+
+  <script src="app.js"></script>
+</body>
+</html>
