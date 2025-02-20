@@ -19,7 +19,7 @@
               "Aero SAE", "DUCOM French Club", "Drexel University Club Sports", "Club Golf", "Drexel Men's Club Volleyball", "Drexel Women's Club Volleyball"
           ];
 
-          function populateSelect(id, options) {
+          function populateDropdown(id, options) {
               const select = document.getElementById(id);
               options.forEach(option => {
                   const opt = document.createElement("option");
@@ -48,17 +48,17 @@
           profileForm.addEventListener("submit", function (event) {
               event.preventDefault();
               const profileData = {
-                  hobbies: Array.from(document.getElementById("hobbies").selectedOptions).map(opt => opt.value),
-                  interests: Array.from(document.getElementById("interests").selectedOptions).map(opt => opt.value),
-                  clubs: Array.from(document.getElementById("clubs").selectedOptions).map(opt => opt.value),
+                  hobbies: [document.getElementById("hobbies").value],
+                  interests: [document.getElementById("interests").value],
+                  clubs: [document.getElementById("clubs").value],
               };
               localStorage.setItem("userProfile", JSON.stringify(profileData));
               updateProfileDisplay(profileData);
           });
 
-          populateSelect("hobbies", hobbiesList);
-          populateSelect("interests", hobbiesList);
-          populateSelect("clubs", clubsList);
+          populateDropdown("hobbies", hobbiesList);
+          populateDropdown("interests", hobbiesList);
+          populateDropdown("clubs", clubsList);
           loadProfile();
       });
   </script>
@@ -69,13 +69,13 @@
     <h2>Modify Your Profile</h2>
     <form id="profileForm">
         <label for="hobbies">Hobbies:</label>
-        <select id="hobbies" name="hobbies" multiple></select><br>
+        <select id="hobbies" name="hobbies"></select><br>
 
         <label for="interests">Academic Interests:</label>
-        <select id="interests" name="interests" multiple></select><br>
+        <select id="interests" name="interests"></select><br>
 
         <label for="clubs">Club Involvement:</label>
-        <select id="clubs" name="clubs" multiple></select><br>
+        <select id="clubs" name="clubs"></select><br>
 
         <button type="submit">Save Profile</button>
     </form>
