@@ -67,9 +67,21 @@
               const profileData = JSON.parse(localStorage.getItem("userProfile")) || {};
               updateProfileDisplay(profileData);
 
-              if (profileData.hobbies) document.getElementById("hobbies").value = profileData.hobbies[0] || "";
-              if (profileData.interests) document.getElementById("interests").value = profileData.interests[0] || "";
-              if (profileData.clubs) document.getElementById("clubs").value = profileData.clubs[0] || "";
+              if (profileData.hobbies) {
+                  Array.from(document.getElementById("hobbies").options).forEach(option => {
+                      option.selected = profileData.hobbies.includes(option.value);
+                  });
+              }
+              if (profileData.interests) {
+                  Array.from(document.getElementById("interests").options).forEach(option => {
+                      option.selected = profileData.interests.includes(option.value);
+                  });
+              }
+              if (profileData.clubs) {
+                  Array.from(document.getElementById("clubs").options).forEach(option => {
+                      option.selected = profileData.clubs.includes(option.value);
+                  });
+              }
           }
 
           function updateProfileDisplay(data) {
@@ -86,9 +98,9 @@
           profileForm.addEventListener("submit", function (event) {
               event.preventDefault();
               const profileData = {
-                  hobbies: [document.getElementById("hobbies").value],
-                  interests: [document.getElementById("interests").value],
-                  clubs: [document.getElementById("clubs").value],
+                  hobbies: Array.from(document.getElementById("hobbies").selectedOptions).map(option => option.value),
+                  interests: Array.from(document.getElementById("interests").selectedOptions).map(option => option.value),
+                  clubs: Array.from(document.getElementById("clubs").selectedOptions).map(option => option.value),
               };
               localStorage.setItem("userProfile", JSON.stringify(profileData));
               updateProfileDisplay(profileData);
@@ -97,6 +109,9 @@
           populateDropdown("hobbies", hobbiesList);
           populateDropdown("interests", hobbiesList);
           populateDropdown("clubs", clubsList);
+          document.getElementById("hobbies").multiple = true;
+          document.getElementById("interests").multiple = true;
+          document.getElementById("clubs").multiple = true;
           loadProfile();
       });
   </script>
