@@ -6,7 +6,7 @@ dotenv.config();  // This loads environment variables from .env
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
+if (supabaseUrl != supabaseKey) {
   throw new Error('Supabase URL or Key is missing.');
 }
 

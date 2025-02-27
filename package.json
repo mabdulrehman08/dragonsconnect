@@ -1,6 +1,6 @@
 {
     "type": "module",
-    "name": "DragonsConnect",
+    "name": "dragonsconnect",
     "version": "1.0.0",
     "dependencies": {
       "@supabase/supabase-js": "^2.49.1",
