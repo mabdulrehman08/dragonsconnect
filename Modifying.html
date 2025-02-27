@@ -20,8 +20,8 @@
           text-align: center;
       }
 
-      .profile-modification {
-          background-color: #001f3f; /* Dark blue */
+      .profile-modification, .profile-display-container {
+          background-color: #001f3f; 
           color: white;
           padding: 20px;
           border-radius: 12px;
@@ -30,31 +30,33 @@
           margin-bottom: 20px;
       }
 
-      .profile-display-container {
-          background-color: #001f3f; /* Dark blue */
+      .tag {
+          display: inline-block;
+          background-color: #ff4136;
           color: white;
-          padding: 20px;
+          padding: 5px 10px;
           border-radius: 12px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-          max-width: 400px;
+          margin: 5px;
+          cursor: pointer;
+      }
+
+      .remove-btn {
+          margin-left: 8px;
+          background: none;
+          border: none;
+          color: white;
+          font-weight: bold;
+          cursor: pointer;
       }
   </style>
   <script>
       document.addEventListener("DOMContentLoaded", function () {
-          const profileForm = document.getElementById("profileForm");
-          const profileDisplay = document.getElementById("profileDisplay");
-
-          const hobbiesList = [
-              "Painting", "Coding", "Basketball", "Photography", "Writing", "Swimming", "Music", "Hiking", "Cooking", "Gaming", 
-              "Reading", "Dancing", "Traveling", "Yoga", "Cycling", "Robotics", "Chess", "Volunteering", "Running", "Woodworking"
-          ];
-
-          const clubsList = [
-              "Aero SAE", "DUCOM French Club", "Drexel University Club Sports", "Club Golf", "Drexel Men's Club Volleyball", "Drexel Women's Club Volleyball", "Drexel K-pop Club", 
-          ];
+          const hobbiesList = ["Painting", "Coding", "Basketball", "Photography", "Writing", "Swimming", "Music", "Hiking", "Cooking", "Gaming", "Reading", "Dancing", "Traveling", "Yoga", "Cycling", "Robotics", "Chess", "Volunteering", "Running", "Woodworking"];
+          const clubsList = ["Aero SAE", "DUCOM French Club", "Drexel University Club Sports", "Club Golf", "Drexel Men's Club Volleyball", "Drexel Women's Club Volleyball", "Drexel K-pop Club"];
 
           function populateDropdown(id, options) {
               const select = document.getElementById(id);
+              select.innerHTML = "";
               options.forEach(option => {
                   const opt = document.createElement("option");
                   opt.value = option;
@@ -64,80 +66,68 @@
           }
 
           function loadProfile() {
-              const profileData = JSON.parse(localStorage.getItem("userProfile")) || {};
+              const profileData = JSON.parse(localStorage.getItem("userProfile")) || { hobbies: [], interests: [], clubs: [] };
               updateProfileDisplay(profileData);
-
-              if (profileData.hobbies) {
-                  Array.from(document.getElementById("hobbies").options).forEach(option => {
-                      option.selected = profileData.hobbies.includes(option.value);
-                  });
-              }
-              if (profileData.interests) {
-                  Array.from(document.getElementById("interests").options).forEach(option => {
-                      option.selected = profileData.interests.includes(option.value);
-                  });
-              }
-              if (profileData.clubs) {
-                  Array.from(document.getElementById("clubs").options).forEach(option => {
-                      option.selected = profileData.clubs.includes(option.value);
-                  });
-              }
           }
 
           function updateProfileDisplay(data) {
-              const displayItems = (items) => items && items.length > 0 ? items.map(item => `<div class="tag">${item}</div>`).join(" ") : "Not specified";
-
-              profileDisplay.innerHTML = `
+              function createTag(category, item) {
+                  return `<span class='tag'>${item} <button class='remove-btn' onclick='removeItem("${category}", "${item}")'>x</button></span>`;
+              }
+              
+              document.getElementById("profileDisplay").innerHTML = `
                   <h3>Profile Information</h3>
-                  <p><strong>Hobbies:</strong> ${displayItems(data.hobbies)}</p>
-                  <p><strong>Academic Interests:</strong> ${displayItems(data.interests)}</p>
-                  <p><strong>Club Involvement:</strong> ${displayItems(data.clubs)}</p>
+                  <p><strong>Hobbies:</strong> ${data.hobbies.map(item => createTag("hobbies", item)).join(" ") || "Not specified"}</p>
+                  <p><strong>Academic Interests:</strong> ${data.interests.map(item => createTag("interests", item)).join(" ") || "Not specified"}</p>
+                  <p><strong>Club Involvement:</strong> ${data.clubs.map(item => createTag("clubs", item)).join(" ") || "Not specified"}</p>
               `;
           }
 
-          profileForm.addEventListener("submit", function (event) {
-              event.preventDefault();
-              const profileData = {
-                  hobbies: Array.from(document.getElementById("hobbies").selectedOptions).map(option => option.value),
-                  interests: Array.from(document.getElementById("interests").selectedOptions).map(option => option.value),
-                  clubs: Array.from(document.getElementById("clubs").selectedOptions).map(option => option.value),
-              };
+          window.addItem = function (category) {
+              const select = document.getElementById(category);
+              const selectedValue = select.value;
+              if (!selectedValue) return;
+              
+              let profileData = JSON.parse(localStorage.getItem("userProfile")) || { hobbies: [], interests: [], clubs: [] };
+              if (!profileData[category].includes(selectedValue)) {
+                  profileData[category].push(selectedValue);
+                  localStorage.setItem("userProfile", JSON.stringify(profileData));
+                  updateProfileDisplay(profileData);
+              }
+          };
+
+          window.removeItem = function (category, item) {
+              let profileData = JSON.parse(localStorage.getItem("userProfile")) || { hobbies: [], interests: [], clubs: [] };
+              profileData[category] = profileData[category].filter(i => i !== item);
               localStorage.setItem("userProfile", JSON.stringify(profileData));
               updateProfileDisplay(profileData);
-          });
+          };
 
           populateDropdown("hobbies", hobbiesList);
           populateDropdown("interests", hobbiesList);
           populateDropdown("clubs", clubsList);
-          document.getElementById("hobbies").multiple = true;
-          document.getElementById("interests").multiple = true;
-          document.getElementById("clubs").multiple = true;
           loadProfile();
       });
   </script>
 </head>
 <body>
-
   <div class="profile-container">
     <section class="profile-modification">
       <h2>Modify Your Profile</h2>
-      <form id="profileForm">
-          <label for="hobbies">Hobbies:</label>
-          <select id="hobbies" name="hobbies"></select><br>
+      <label for="hobbies">Hobbies:</label>
+      <select id="hobbies"></select>
+      <button onclick="addItem('hobbies')">Add</button><br>
 
-          <label for="interests">Academic Interests:</label>
-          <select id="interests" name="interests"></select><br>
+      <label for="interests">Academic Interests:</label>
+      <select id="interests"></select>
+      <button onclick="addItem('interests')">Add</button><br>
 
-          <label for="clubs">Club Involvement:</label>
-          <select id="clubs" name="clubs"></select><br>
-
-          <button type="submit">Save Profile</button>
-      </form>
+      <label for="clubs">Club Involvement:</label>
+      <select id="clubs"></select>
+      <button onclick="addItem('clubs')">Add</button><br>
     </section>
 
     <div id="profileDisplay" class="profile-display-container"></div>
   </div>
-
-  <script src="app.js"></script>
 </body>
 </html>
