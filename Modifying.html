@@ -54,7 +54,7 @@
   <script>
       document.addEventListener("DOMContentLoaded", function () {
           const hobbiesList = ["Painting", "Coding", "Basketball", "Photography", "Writing", "Swimming", "Music", "Hiking", "Cooking", "Gaming", "Reading", "Dancing", "Traveling", "Yoga", "Cycling", "Robotics", "Chess", "Volunteering", "Running", "Woodworking"];
-          const clubsList = ["Aero SAE", "American Medical Student Association (AMSA)", "Asian Students Association (ASA)", "Biomedical Engineering Society (BMES)", "Club Golf", "Drexel AI, Drexel Esports", "Drexel K-pop Club", "Drexel Men's Club Volleyball", "Drexel PRIDE", "Drexel University Club Sports", "Drexel Women's Club Volleyball", "DUCOM French Club", "Engineers Without Borders (EWB)", "Women in Computing Society (WiCS)"];
+          const clubsList = ["Aero SAE", "American Medical Student Association (AMSA)", "Asian Students Association (ASA)", "Biomedical Engineering Society (BMES)", "Club Golf", "Drexel AI", "Drexel Esports", "Drexel K-pop Club", "Drexel Men's Club Volleyball", "Drexel PRIDE", "Drexel University Club Sports", "Drexel Women's Club Volleyball", "DUCOM French Club", "Engineers Without Borders (EWB)", "Women in Computing Society (WiCS)"];
 
           function populateDropdown(id, options) {
               const select = document.getElementById(id);
@@ -73,16 +73,24 @@
           }
 
           function updateProfileDisplay(data) {
-              function createTag(category, item) {
-                  return `<span class='tag'>${item} <button class='remove-btn' onclick='removeItem("${category}", "${item}")'>x</button></span>`;
-              }
-              
-              document.getElementById("profileDisplay").innerHTML = `
-                  <h3>Profile Information</h3>
-                  <p><strong>Hobbies:</strong> ${data.hobbies.map(item => createTag("hobbies", item)).join(" ") || "Not specified"}</p>
-                  <p><strong>Academic Interests:</strong> ${data.interests.map(item => createTag("interests", item)).join(" ") || "Not specified"}</p>
-                  <p><strong>Club Involvement:</strong> ${data.clubs.map(item => createTag("clubs", item)).join(" ") || "Not specified"}</p>
-              `;
+              const profileDisplay = document.getElementById("profileDisplay");
+              profileDisplay.innerHTML = `<h3>Profile Information</h3>`;
+
+              ["hobbies", "interests", "clubs"].forEach(category => {
+                  const categoryDisplay = document.createElement("p");
+                  categoryDisplay.innerHTML = `<strong>${category.charAt(0).toUpperCase() + category.slice(1)}:</strong> `;
+                  if (data[category].length === 0) {
+                      categoryDisplay.innerHTML += "Not specified";
+                  } else {
+                      data[category].forEach(item => {
+                          const span = document.createElement("span");
+                          span.className = "tag";
+                          span.innerHTML = `${item} <button class='remove-btn' data-category='${category}' data-item='${item}'>x</button>`;
+                          categoryDisplay.appendChild(span);
+                      });
+                  }
+                  profileDisplay.appendChild(categoryDisplay);
+              });
           }
 
           window.addItem = function (category) {
@@ -98,12 +106,16 @@
               }
           };
 
-          window.removeItem = function (category, item) {
-              let profileData = JSON.parse(localStorage.getItem("userProfile")) || { hobbies: [], interests: [], clubs: [] };
-              profileData[category] = profileData[category].filter(i => i !== item);
-              localStorage.setItem("userProfile", JSON.stringify(profileData));
-              updateProfileDisplay(profileData);
-          };
+          document.getElementById("profileDisplay").addEventListener("click", function (event) {
+              if (event.target.classList.contains("remove-btn")) {
+                  const category = event.target.getAttribute("data-category");
+                  const item = event.target.getAttribute("data-item");
+                  let profileData = JSON.parse(localStorage.getItem("userProfile")) || { hobbies: [], interests: [], clubs: [] };
+                  profileData[category] = profileData[category].filter(i => i !== item);
+                  localStorage.setItem("userProfile", JSON.stringify(profileData));
+                  updateProfileDisplay(profileData);
+              }
+          });
 
           populateDropdown("hobbies", hobbiesList);
           populateDropdown("interests", hobbiesList);
