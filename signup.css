@@ -75,8 +75,9 @@ button[type="submit"] {
 button:hover{
     font-size: 18px;
     margin-bottom: 13px;
+    color: white
 }
-color: white
+
 .wrap {
     display: flex;
     justify-content: center;
