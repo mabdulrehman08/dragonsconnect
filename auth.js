@@ -1,8 +1,11 @@
-const { createClient } = supabase;
+// Initialize Supabase
+import { createClient } from '@supabase/supabase-js'
+
 const supabaseUrl = "https://gmtnsgvgydsfdvyyywyy.supabase.co";
 const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdtdG5zZ3ZneWRzZmR2eXl5d3l5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDA3MTM1NzQsImV4cCI6MjA1NjI4OTU3NH0.z4wQSX3Uz4e7GXR5LStRaL6dwPWgPaGi1rB0U2vZg9s";
-const supabase = createClient(supabaseUrl, supabaseKey);
 
+const supabase = createClient(supabaseUrl, supabaseKey);
+// const { createClient } = supabase;
 // Function to Sign Up a New User and Store in SQL
 async function signUp() {
     const firstName = document.getElementById("first_name").value;
@@ -33,18 +36,42 @@ async function signUp() {
     // Insert user details into the "users" table in the database
     const { data, insertError } = await supabase
         .from("users")
-        .insert([{
-            first_name: firstName,
-            last_name: lastName,
-            drexel_email: drexelEmail,
-            password: password, // ⚠️ You should hash passwords before storing them
-            phone_number: phoneNumber,
-        }]);
+        .insert([
+            {
+                first_name: firstName,
+                last_name: lastName,
+                drexel_email: drexelEmail,
+                password: password, // Note: You should hash the password before saving it
+                phone_number: phoneNumber,
+            },
+        ]);
 
-    // Check if there is an error during data insertion
+    // Handle errors if any during insert
     if (insertError) {
         document.getElementById("message").textContent = "Database Error: " + insertError.message;
     } else {
         document.getElementById("message").textContent = "User signed up successfully!";
     }
+}
+
+// Optionally, you can also implement log in and log out functions like this:
+async function logIn() {
+    const drexelEmail = document.getElementById("drexel_email").value;
+    const password = document.getElementById("password").value;
+
+    const { user, error } = await supabase.auth.signInWithPassword({
+        email: drexelEmail,
+        password: password,
+    });
+
+    if (error) {
+        document.getElementById("message").textContent = "Error: " + error.message;
+    } else {
+        document.getElementById("message").textContent = "Login successful!";
+    }
+}
+
+async function logOut() {
+    await supabase.auth.signOut();
+    document.getElementById("message").textContent = "Logged out!";
 }
