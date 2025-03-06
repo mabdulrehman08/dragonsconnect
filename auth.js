@@ -33,13 +33,18 @@ async function signUp() {
     // Insert user details into the "users" table in the database
     const { data, insertError } = await supabase
         .from("users")
-        .insert([
-            {
-                first_name: firstName,
-                last_name: lastName,
-                drexel_email: drexelEmail,
-                password: password, 
-                phone_number: phoneNumber,
- 
+        .insert([{
+            first_name: firstName,
+            last_name: lastName,
+            drexel_email: drexelEmail,
+            password: password, // ⚠️ You should hash passwords before storing them
+            phone_number: phoneNumber,
+        }]);
 
-
+    // Check if there is an error during data insertion
+    if (insertError) {
+        document.getElementById("message").textContent = "Database Error: " + insertError.message;
+    } else {
+        document.getElementById("message").textContent = "User signed up successfully!";
+    }
+}
