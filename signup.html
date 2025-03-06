@@ -11,30 +11,49 @@
 <body>
     <div class="main">
         <h2>Registration Form</h2>
-        <form action="">
-            <label for="first">First Name:</label>
-            <input type="text" id="first" name="first" required />
-
-            <label for="last">Last Name:</label>
-            <input type="text" id="last" name="last" required />
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"
+        <form id="signup-form">
+            <input type="text" id="first-name" placeholder="First Name" required>
+            <input type="text" id="last-name" placeholder="Last Name" required>
+            <input type="email" id="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" name="password"
                    pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
                    title="Password must contain at least one number, 
                            one alphabet, one symbol, and be at 
                            least 8 characters long" required />
-
-            <label for="repassword">Re-type Password:</label>
-            <input type="password" id="repassword" name="repassword" required />
-
-            <button type="submit">
-                Submit
-            </button>
-        </form>
+            <button type="submit">Sign Up</button>
+          </form>
+          
+          <p id="signup-message"></p>
+          
+          <script>
+            document.getElementById("signup-form").addEventListener("submit", async function (event) {
+              event.preventDefault();
+          
+              const firstName = document.getElementById("first-name").value;
+              const lastName = document.getElementById("last-name").value;
+              const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+          
+              // Register user with Supabase Auth
+              const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password
+              });
+          
+              if (error) {
+                document.getElementById("signup-message").innerText = "Error: " + error.message;
+                return;
+              }
+          
+              // Save additional user details in the "users" table
+              const { user } = data;
+              await supabase.from("users").insert([
+                { id: user.id, first_name: firstName, last_name: lastName, email: email }
+              ]);
+          
+              document.getElementById("signup-message").innerText = "Sign-up successful! Check your email.";
+            });
+          </script>
     </div>
     <footer>
         <div class="links">
