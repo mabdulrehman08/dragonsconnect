@@ -1,98 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HTML Registration Form</title>
-    <link rel="stylesheet" href="signup.css">
-    <script src="signup.js"></script>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width" />
+	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+	<title>Dragons Connect</title>
+	<link rel="stylesheet" href="styles.css">
+	<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>>
+    <!-- <script defer src="auth.js"></script> #links js file -->
+	<!-- <script src="auth.js"></script> Link your authentication script -->
+
+	
+
 </head>
-
 <body>
-    <div class="main">
-        <h2>Registration Form</h2>
-        <form action="">
-            <label for="first">First Name:</label>
-            <input type="text" id="first" name="first" required />
+	<header>
+		<nav>
+			<div class = "DragonsConnect"><h1>DragonsConnect</h1></div>
 
-            <label for="last">Last Name:</label>
-            <input type="text" id="last" name="last" required />
+		<div class="login-sec">
+			<a href = "signup.html"><button>Sign Up</button></a>
+			<a href = "login.html"><button>Login</button></a>
+		</div>
+	</nav>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required />
+	 <div class="home-content">
+		<div class="home-container">
+			<h2>Your Gateway to Campus Connections</h2>
+		</div>
+	 </div>
+	</header>
 
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"
-                   pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
-                   title="Password must contain at least one number, 
-                           one alphabet, one symbol, and be at 
-                           least 8 characters long" required />
-
-            <label for="repassword">Re-type Password:</label>
-            <input type="password" id="repassword" name="repassword" required />
-
-            <label for="mobile">Phone Number:</label>
-            <input type="text" id="mobile" name="mobile" maxlength="10" required />
-
-            <button type="submit">
-                Submit
-            </button>
-        </form>
-    </div>
-    <footer>
-        <div class="links">
-            <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
+<footer>
+	<div class = "links">
+		<ul>
+			<li><a class= "active" href = "#"><button class="nav">Services</button></a></li>
+			<li><a href = "#"><button class="nav">Contact</button></a></li>
+			<li><a href = "profile.html"><button class="nav">Delete My Account</button></a></li>
+		</ul>
+	</div>
+</footer>
+    <p id="message"></p> 
 </body>
 </html>
 
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-     <title>Sign Up - DragonsConnect</title>
-     <link rel="stylesheet" href="signup.css">
-     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-     <script defer src="auth.js"></script> This will handle the signup logic 
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="DragonsConnect"><h1>DragonsConnect</h1></div>
-            <div class="login-sec">
-                <button><a href="login.html">Login</a></button>
-            </div>
-        </nav>
-    </header>
- 
-    <main>
-        <div class="signup-container">
-            <h2>Create an Account</h2>
-            <form id="signup-form">
-                <input type="text" id="first_name" placeholder="First Name" required>
-                <input type="text" id="last_name" placeholder="Last Name" required>
-                <input type="email" id="drexel_email" placeholder="Drexel Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <input type="password" id="confirm_password" placeholder="Confirm Password" required>
-                <input type="text" id="phone_number" placeholder="Phone Number" required>
-                <button type="submit">Sign Up</button>
-            </form>
-            <p>Already have an account? <a href="login.html">Login here</a></p>
-        </div>
-    </main>
- 
-    <footer>
-        <div class="links">
-            <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
-</body>
-</html> -->
