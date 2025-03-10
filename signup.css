@@ -24,7 +24,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
     position: fixed;
-    top: 130px; right: 30px;
+    top: 110px; right: 30px;
     transition: transform 0.2s;
     width: 500px;
     text-align: center;
