@@ -10,12 +10,25 @@
 
 <body>
     <div class="main">
-        <h2>Sign Up</h2>
+      <h1>Dragons Connect</h1>  
+      <h2>Sign Up</h2>
         <form id="signup-form">
-            <input type="text" id="first-name" placeholder="First Name" required>
-            <input type="text" id="last-name" placeholder="Last Name" required>
-            <input type="email" id="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" name="password"
+            <label for="first-name">
+              First Name:
+            </label>
+            <input type="text" id="first-name" placeholder="Enter your First Name" required>
+            <label for="last-name">
+              Last Name:
+            </label>
+            <input type="text" id="last-name" placeholder="Enter your Last Name" required>
+            <label for="email">
+              Email:
+            </label>
+            <input type="email" id="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required placeholder="Enter your Email" required>
+            <label for="password">
+              Password:
+            </label>
+            <input type="password" id="password" placeholder=" Enter your Password" name="password"
                    pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
                    title="Password must contain at least one number, 
                            one alphabet, one symbol, and be at 
