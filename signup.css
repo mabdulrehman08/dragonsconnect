@@ -24,7 +24,7 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
     position: fixed;
-    top: 20px; right: 70px;
+    top: 110px; right: 30px;
     transition: transform 0.2s;
     width: 500px;
     text-align: center;
@@ -32,7 +32,6 @@ body {
 
 .main h2 {
     color: #364042;
-    margin-bottom: 20px;
 }
 
 label {
@@ -65,17 +64,12 @@ button[type="submit"] {
     margin-top: 15px;
     margin-bottom: 15px;
     border: none;
-    color: black;
+    color: white;
     cursor: pointer;
     background-color: #FFDF00;
     width: 100%;
     font-family: "Space Mono", serif;
     font-size: 16px;
-}
-button:hover{
-    font-size: 18px;
-    margin-bottom: 13px;
-    color: white
 }
 
 .wrap {

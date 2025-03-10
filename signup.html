@@ -10,90 +10,69 @@
 
 <body>
     <div class="main">
-        <h2>Registration Form</h2>
-        <form action="">
-            <label for="first">First Name:</label>
-            <input type="text" id="first" name="first" required />
-
-            <label for="last">Last Name:</label>
-            <input type="text" id="last" name="last" required />
-
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required />
-
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password"
+      <h1>Dragons Connect</h1>  
+      <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="first-name">
+              First Name:
+            </label>
+            <input type="text" id="first-name" placeholder="Enter your First Name" required>
+            <label for="last-name">
+              Last Name:
+            </label>
+            <input type="text" id="last-name" placeholder="Enter your Last Name" required>
+            <label for="email">
+              Email:
+            </label>
+            <input type="email" id="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required placeholder="Enter your Email" required>
+            <label for="password">
+              Password:
+            </label>
+            <input type="password" id="password" placeholder=" Enter your Password" name="password"
                    pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
                    title="Password must contain at least one number, 
                            one alphabet, one symbol, and be at 
                            least 8 characters long" required />
-
-            <label for="repassword">Re-type Password:</label>
-            <input type="password" id="repassword" name="repassword" required />
-
-            <label for="mobile">Phone Number:</label>
-            <input type="text" id="mobile" name="mobile" maxlength="10" required />
-
-            <button type="submit">
-                Submit
-            </button>
-        </form>
+            <button type="submit">Sign Up</button>
+          </form>
+          
+          <p id="signup-message"></p>
+          
+          <script>
+            document.getElementById("signup-form").addEventListener("submit", async function (event) {
+              event.preventDefault();
+          
+              const firstName = document.getElementById("first-name").value;
+              const lastName = document.getElementById("last-name").value;
+              const email = document.getElementById("email").value;
+              const password = document.getElementById("password").value;
+          
+              // Register user with Supabase Auth
+              const { data, error } = await supabase.auth.signUp({
+                email: email,
+                password: password
+              });
+          
+              if (error) {
+                document.getElementById("signup-message").innerText = "Error: " + error.message;
+                return;
+              }
+          
+              // Save additional user details in the "users" table
+              const { user } = data;
+              await supabase.from("users").insert([
+                { id: user.id, first_name: firstName, last_name: lastName, email: email }
+              ]);
+          
+              document.getElementById("signup-message").innerText = "Sign-up successful! Check your email.";
+            });
+          </script>
     </div>
-    <footer>
-        <div class="links">
-            <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
+    <script>
+        const SUPABASE_URL = "https://ifamfjeazbkrnmqbxsux.supabase.co";
+        const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmYW1mamVhemJrcm5tcWJ4c3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAwNzU4NzYsImV4cCI6MjA1NTY1MTg3Nn0.pxme26fjpYTuH0yFUhFzf9o50n_5q7KfzgCD_8vwu_Q";
+        const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+    </script>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-     <meta charset="UTF-8"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-     <title>Sign Up - DragonsConnect</title>
-     <link rel="stylesheet" href="signup.css">
-     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-     <script defer src="auth.js"></script> This will handle the signup logic 
-</head>
-<body>
-    <header>
-        <nav>
-            <div class="DragonsConnect"><h1>DragonsConnect</h1></div>
-            <div class="login-sec">
-                <button><a href="login.html">Login</a></button>
-            </div>
-        </nav>
-    </header>
- 
-    <main>
-        <div class="signup-container">
-            <h2>Create an Account</h2>
-            <form id="signup-form">
-                <input type="text" id="first_name" placeholder="First Name" required>
-                <input type="text" id="last_name" placeholder="Last Name" required>
-                <input type="email" id="drexel_email" placeholder="Drexel Email" required>
-                <input type="password" id="password" placeholder="Password" required>
-                <input type="password" id="confirm_password" placeholder="Confirm Password" required>
-                <input type="text" id="phone_number" placeholder="Phone Number" required>
-                <button type="submit">Sign Up</button>
-            </form>
-            <p>Already have an account? <a href="login.html">Login here</a></p>
-        </div>
-    </main>
- 
-    <footer>
-        <div class="links">
-            <ul>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contact</a></li>
-            </ul>
-        </div>
-    </footer>
-</body>
-</html> -->
  
