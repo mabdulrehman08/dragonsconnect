@@ -63,32 +63,36 @@
             }
 
             try {
-                let { data, error } = await supabaseClient.auth.signUp({ email, password });
+              let { data, error } = await supabaseClient.auth.signUp({ email, password });
 
-                if (error) {
-                    throw new Error(error.message);
-                }
-                
-                if (!data.user) {
-                    throw new Error("User not created. Please try again.");
-                }
+              if (error) {
+                  throw new Error(error.message);
+              }
+              
+              if (!data.user) {
+                  throw new Error("User not created. Please verify your email.");
+              }
 
-                // Insert profile into database
-                const { error: dbError } = await supabaseClient.from("profiles").insert([
-                    { id: data.user.id, first_name: first, last_name: last, email: email }
-                ]);
+              // Extract user ID
+              const userId = data.user?.id || data.user?.user_metadata?.sub;
 
-                if (dbError) {
-                    throw new Error("Signup successful, but failed to save profile.");
-                }
+              // Insert profile into database
+              const { error: dbError } = await supabaseClient.from("profiles").insert([
+                  { id: userId, first_name: first, last_name: last, email: email }
+              ]);
 
-                document.getElementById("message").innerText = "Sign-up successful! Check your email for confirmation.";
-            } catch (err) {
-                document.getElementById("message").innerText = err.message;
-            } finally {
-                resetButton();
-            }
-        }
+              if (dbError) {
+                  console.error("Database error:", dbError);
+                  throw new Error(`Signup successful, but failed to save profile: ${dbError.message}`);
+              }
+
+              document.getElementById("message").innerText = "Sign-up successful! Check your email for confirmation.";
+          } 
+          catch (err) {
+              document.getElementById("message").innerText = err.message;
+          } finally {
+              resetButton();
+          }
 
         function resetButton() {
             document.getElementById("signup-btn").innerText = "Sign Up";
