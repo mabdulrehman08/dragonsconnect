@@ -1,64 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sign Up</title>
-    <link rel="stylesheet" href="signup.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dragons Connect - Login & Sign Up</title>
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="main">
-      <h1>Dragons Connect</h1>  
-      <h2>Sign Up</h2>
-        <form id="signup-form">
-            <label for="first-name">
-              First Name:
-            </label>
+    <div class="container">
+        <h1>Dragons Connect</h1>
+        
+        <h2>Sign Up</h2>
+        <form id="signup-form" onsubmit="signUp(event)">
+            <label for="first-name">First Name:</label>
             <input type="text" id="first-name" placeholder="Enter your First Name" required>
-            <label for="last-name">
-              Last Name:
-            </label>
+            
+            <label for="last-name">Last Name:</label>
             <input type="text" id="last-name" placeholder="Enter your Last Name" required>
-            <label for="email">
-              Email:
-            </label>
-            <input type="email" id="email" pattern="[a-z0-9._%+\-]+@drexel.edu" title="Must enter a drexel email" required placeholder="Enter your Email" required>
-            <label for="password">
-              Password:
-            </label>
-            <input type="password" id="password" placeholder=" Enter your Password" name="password"
+            
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" pattern="[a-z0-9._%+-]+@drexel.edu" 
+                   title="Must enter a Drexel email" required placeholder="Enter your Email">
+            
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" placeholder="Enter your Password"
                    pattern="^(?=.*\d)(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9])\S{8,}$" 
-                   title="Password must contain at least one number, 
-                           one alphabet, one symbol, and be at 
-                           least 8 characters long" required />
+                   title="Password must contain at least one number, one letter, one symbol, and be at least 8 characters long" 
+                   required>
+            
             <button type="submit">Sign Up</button>
-          </form>
-          
-          <p id="signup-message"></p>
-          
-          <script>
-            import { createClient } from '@supabase/supabase-js'
-            const supabaseUrl = 'https://ifamfjeazbkrnmqbxsux.supabase.co'
-            const supabaseKey = process.env.eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImlmYW1mamVhemJrcm5tcWJ4c3V4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDAwNzU4NzYsImV4cCI6MjA1NTY1MTg3Nn0.pxme26fjpYTuH0yFUhFzf9o50n_5q7KfzgCD_8vwu_Q
-            const supabase = createClient(supabaseUrl, supabaseKey)
-
-            async function signUp() {
-                const first = document.getElementById("first-name").value;
-                const last = document.getElementById("last-name").value;
-                const email = document.getElementById("email").value;
-                const password = document.getElementById("password").value;
-                
-                let { user, error } = await supabaseClient.auth.signUp({ email, password });
-                if (error) {
-                    alert(error.message);
-                } else {
-                    alert("Sign-up successful!");
-                }
-            }
-          </script>
+        </form>
+        
+        <h2>Login</h2>
+        <form id="login-form" onsubmit="login(event)">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" placeholder="Enter your Email" required>
+            
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Enter your Password" required>
+            
+            <button type="submit">Login</button>
+        </form>
+        
+        <p id="message"></p>
     </div>
+
+    <script>
+        const { createClient } = supabase;
+        const supabaseUrl = "https://ifamfjeazbkrnmqbxsux.supabase.co";
+        const supabaseKey = "pxme26fjpYTuH0yFUhFzf9o50n_5q7KfzgCD_8vwu_Q";
+        const supabaseClient = createClient(supabaseUrl, supabaseKey);
+
+        async function signUp(event) {
+            event.preventDefault();
+            const first = document.getElementById("first-name").value;
+            const last = document.getElementById("last-name").value;
+            const email = document.getElementById("signup-email").value;
+            const password = document.getElementById("signup-password").value;
+            
+            let { user, error } = await supabaseClient.auth.signUp({ email, password });
+            if (error) {
+                document.getElementById("message").innerText = error.message;
+            } else {
+                document.getElementById("message").innerText = "Sign-up successful! Check your email for confirmation.";
+            }
+        }
+    </script>
 </body>
 </html>
- 
