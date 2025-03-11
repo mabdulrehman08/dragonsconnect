@@ -50,10 +50,20 @@
             
             let { user, error } = await supabaseClient.auth.signUp({ email, password });
             if (error) {
-                document.getElementById("message").innerText = error.message;
+            document.getElementById("message").innerText = error.message;
+            } 
+            else {
+            // Store additional user details in a 'profiles' table
+            const { error: dbError } = await supabaseClient.from("profiles").insert([
+                { id: data.user.id, first_name: first, last_name: last, email: email }
+            ]);
+
+            if (dbError) {
+                document.getElementById("message").innerText = "Signup successful, but failed to save profile.";
             } else {
-                document.getElementById("message").innerText = "Sign-up successful";
+                document.getElementById("message").innerText = "Sign-up successful! Check your email for confirmation.";
             }
+          }
         }
     </script>
 </body>
