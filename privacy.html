@@ -1,0 +1,27 @@
+<form id="privacy-form">
+    <label for="visibility">Profile Visibility:</label>
+    <select id="visibility" name="visibility">
+      <option value="public">Public</option>
+      <option value="friends">Friends Only</option>
+      <option value="private">Private</option>
+    </select>
+    <button type="submit">Save Settings</button>
+  </form>
+  
+  <script>
+    const form = document.getElementById("privacy-form");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const visibility = document.getElementById("visibility").value;
+  
+      const res = await fetch("/api/settings/privacy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ visibility }),
+      });
+  
+      const data = await res.json();
+      alert(data.message);
+    });
+  </script>
+  
