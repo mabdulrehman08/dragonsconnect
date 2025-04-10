@@ -56,12 +56,12 @@ body {
 .page_container {
     max-width: 100%;
     margin: 0;
-    padding: 20px; /* Add padding around the content */
+    padding: 20px;
     flex-grow: 1;
     display: flex;
     flex-direction: column;
     min-height: calc(100vh - 50px);
-    box-sizing: border-box; /* Ensure padding is included in the width */
+    box-sizing: border-box; 
 }
 
 .profile_header {
@@ -175,11 +175,11 @@ textarea {
     font-family: inherit;
     resize: none;
     padding: 8px;
-    margin-bottom: 10px; /* Added margin for space between textarea and button */
+    margin-bottom: 10px;
 }
 
 #post_button {
-    align-self: flex-end; /* Align the button to the right */
+    align-self: flex-end; 
     background-color: #aaa;
     border: none;
     color: white;
