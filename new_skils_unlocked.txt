@@ -1,1 +1,6 @@
 Hey so this is dragonsconnect team and this is what learned while doing this project 
+Muhammad Abdulrehman
+I watched these tutoroials and read the following documentations
+https://youtu.be/Z1RJmh_OqeA
+https://flask.palletsprojects.com/en/stable/tutorial/layout/
+
