@@ -149,3 +149,44 @@
     align-items: center;
     padding: 1em;
   }
+
+  /* Friends List Styles */
+
+main .friends_list {
+    padding: 1em;
+  }
+  
+  main .friends_list .friend {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  main .friends_list .friend img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 1em;
+  }
+  
+  main .friends_list .friend .friend_name {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+    color: #0A246A; /* Drexel Blue */
+  }
+  
+  main .friends_list .friend .friend_email {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  main .friends_list .friend .remove_friend_button {
+    background-color: #0A246A; /* Drexel Blue */
+    color: #F7DC6F; /* Drexel Gold */
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
+    cursor: pointer;
+    margin-left: 1em;
+  }

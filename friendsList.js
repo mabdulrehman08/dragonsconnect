@@ -56,3 +56,16 @@ const friends = [
     const addFriendModal = document.querySelector('#add_friend_modal');
     addFriendModal.style.display = 'none';
   });
+
+  // Get the friends list element
+const friendsList = document.querySelector('.friends_list');
+
+// Add an event listener to each remove friend button
+document.querySelectorAll('.remove_friend_button').forEach(button => {
+  button.addEventListener('click', () => {
+    // Get the parent element of the button (the friend element)
+    const friendElement = button.parentElement;
+    // Remove the friend element from the friends list
+    friendsList.removeChild(friendElement);
+  });
+});
