@@ -1,6 +1,6 @@
 // friendsList.js
 
-// Friends data
+// Sample friends data
 const friends = [
   { name: 'Joe Smchoe', email: 'joe.smchoe@drexel.edu' },
   { name: 'MJ Parker', email: 'mj.parker@drexel.edu' },
@@ -40,7 +40,6 @@ sendFriendRequestButton.addEventListener('click', () => {
   const newFriend = { name: friendName, email: friendEmail };
 
   // Add new friend to friends list
-  friends.push(newFriend);
   const newFriendHTML = `
     <div class="friend">
       <img src="images/friend.jpg" alt="Friend">
@@ -67,11 +66,5 @@ friendsList.addEventListener('click', (e) => {
     const friendElement = e.target.parentElement;
     // Remove the friend element from the friends list
     friendsList.removeChild(friendElement);
-
-    // Update friends array
-    const friendIndex = friends.findIndex((friend) => friend.name === friendElement.querySelector('.friend_name').textContent);
-    if (friendIndex !== -1) {
-      friends.splice(friendIndex, 1);
-    }
   }
 });
