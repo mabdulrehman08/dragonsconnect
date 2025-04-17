@@ -1,121 +1,164 @@
-body {
-    font-family: 'Space Mono', monospace;
-    background-color: #f7f7f7; /* Drexel gray */
-}
+/* Global Styles */
 
-#top_bar {
-    background-color: #002B7F; /* Drexel blue */
-    color: #FFFFFF;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: 'Space Mono', monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  
+  /* Header Styles */
+  
+  header {
+    background-color: #333;
+    color: #fff;
     padding: 1em;
     text-align: center;
-}
-
-#top_bar img {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    margin-right: 10px;
-}
-
-.page_container {
-    max-width: 800px;
-    margin: 40px auto;
-    background-color: #FFFFFF;
-    padding: 20px;
-    border: 1px solid #DDDDDD;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.friends_header {
+  }
+  
+  header .greeting {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  header form {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.friends_header h1 {
-    color: #002B7F; /* Drexel blue */
-}
-
-#add_friend_button {
-    background-color: #002B7F; /* Drexel blue */
-    color: #FFFFFF;
+    justify-content: center;
+    margin-bottom: 1em;
+  }
+  
+  header input[type="search"] {
+    width: 50%;
+    padding: 0.5em;
+    font-size: 1em;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  header img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 0 1em;
+  }
+  
+  /* Main Styles */
+  
+  main {
+    max-width: 800px;
+    margin: 2em auto;
+    padding: 1em;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  main .friends_header {
+    background-color: #f7f7f7;
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  main .friends_header h1 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  
+  main .friends_header button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
     cursor: pointer;
-}
-
-#add_friend_button:hover {
-    background-color: #0047AB; /* Drexel darker blue */
-}
-
-.friends_list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.friend {
+  }
+  
+  main .friends_list {
+    padding: 1em;
+  }
+  
+  main .friends_list .friend {
     display: flex;
     align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #DDDDDD;
-}
-
-.friend img {
-    width: 40px;
-    height: 40px;
+    padding: 1em;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  main .friends_list .friend img {
+    width: 50px;
+    height: 50px;
     border-radius: 50%;
-    margin-right: 10px;
-}
-
-.friend_name {
-    font-weight: bold;
-    color: #333333;
-}
-
-#add_friend_modal {
-    display: none;
+    margin: 0 1em;
+  }
+  
+  main .friends_list .friend .friend_name {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+  }
+  
+  main .friends_list .friend .friend_email {
+    font-size: 1em;
+    color: #666;
+  }
+  
+  /* Modal Styles */
+  
+  .modal {
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-}
-
-#add_friend_modal .modal_content {
-    background-color: #FFFFFF;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #DDDDDD;
-    border-radius: 10px;
-    width: 50%;
-}
-
-#add_friend_modal .modal_content h2 {
-    color: #002B7F; /* Drexel blue */
-}
-
-#add_friend_modal input[type="text"] {
+    display: none;
+  }
+  
+  .modal_content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 1em;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .modal_content h2 {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+  }
+  
+  .modal_content form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
+  }
+  
+  .modal_content input[type="text"] {
     width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #DDDDDD;
-}
-
-#send_friend_request {
-    background-color: #002B7F; /* Drexel blue */
-    color: #FFFFFF;
+    padding: 0.5em;
+    font-size: 1em;
     border: none;
-    padding: 10px 20px;
-    font-size: 16px;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1em;
+  }
+  
+  .modal_content button {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5em 1em;
+    border: none;
+    border-radius: 0.5em;
     cursor: pointer;
-}
-
-#send_friend_request:hover {
-    background-color: #0047AB; /* Drexel darker blue */
-}
+  }
