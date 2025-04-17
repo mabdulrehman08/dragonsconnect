@@ -1,70 +1,77 @@
 // friendsList.js
 
-// Sample friends data
+// Friends data
 const friends = [
-    { name: 'Joe Smchoe', email: 'joe.smchoe@drexel.edu' },
-    { name: 'MJ Parker', email: 'mj.parker@drexel.edu' },
-    { name: 'Jess Ica', email: 'jess.ica@drexel.edu' },
-  ];
-  
-  // Populate friends list
-  const friendsList = document.querySelector('.friends_list');
-  friends.forEach((friend) => {
-    const friendHTML = `
-      <div class="friend">
-        <img src="images/friend.jpg" alt="Friend">
-        <span class="friend_name">${friend.name}</span>
-        <span class="friend_email">${friend.email}</span>
-        <button class="remove_friend_button">Remove Friend</button>
-      </div>
-    `;
-    friendsList.insertAdjacentHTML('beforeend', friendHTML);
-  });
-  
-  // Add event listener to "Add Friend" button
-  const addFriendButton = document.querySelector('#add_friend_button');
-  addFriendButton.addEventListener('click', () => {
-    const addFriendModal = document.querySelector('#add_friend_modal');
-    addFriendModal.style.display = 'block';
-  });
-  
-  // Add event listener to "Send Friend Request" button
-  const sendFriendRequestButton = document.querySelector('#send_friend_request');
-  sendFriendRequestButton.addEventListener('click', () => {
-    const friendNameInput = document.querySelector('#friend_name');
-    const friendEmailInput = document.querySelector('#friend_email');
-    const friendName = friendNameInput.value.trim();
-    const friendEmail = friendEmailInput.value.trim();
-  
-    // Create a new friend object
-    const newFriend = { name: friendName, email: friendEmail };
-  
-    // Add new friend to friends list
-    const newFriendHTML = `
-      <div class="friend">
-        <img src="images/friend.jpg" alt="Friend">
-        <span class="friend_name">${newFriend.name}</span>
-        <span class="friend_email">${newFriend.email}</span>
-        <button class="remove_friend_button">Remove Friend</button>
-      </div>
-    `;
-    friendsList.insertAdjacentHTML('beforeend', newFriendHTML);
-  
-    // Clear input fields
-    friendNameInput.value = '';
-    friendEmailInput.value = '';
-  
-    // Close add friend modal
-    const addFriendModal = document.querySelector('#add_friend_modal');
-    addFriendModal.style.display = 'none';
-  });
-  
-  // Add an event listener to each remove friend button
-  friendsList.addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove_friend_button')) {
-      // Get the parent element of the button (the friend element)
-      const friendElement = e.target.parentElement;
-      // Remove the friend element from the friends list
-      friendsList.removeChild(friendElement);
+  { name: 'Joe Smchoe', email: 'joe.smchoe@drexel.edu' },
+  { name: 'MJ Parker', email: 'mj.parker@drexel.edu' },
+  { name: 'Jess Ica', email: 'jess.ica@drexel.edu' },
+];
+
+// Populate friends list
+const friendsList = document.querySelector('.friends_list');
+friends.forEach((friend) => {
+  const friendHTML = `
+    <div class="friend">
+      <img src="images/friend.jpg" alt="Friend">
+      <span class="friend_name">${friend.name}</span>
+      <span class="friend_email">${friend.email}</span>
+      <button class="remove_friend_button">Remove Friend</button>
+    </div>
+  `;
+  friendsList.insertAdjacentHTML('beforeend', friendHTML);
+});
+
+// Add event listener to "Add Friend" button
+const addFriendButton = document.querySelector('#add_friend_button');
+addFriendButton.addEventListener('click', () => {
+  const addFriendModal = document.querySelector('#add_friend_modal');
+  addFriendModal.style.display = 'block';
+});
+
+// Add event listener to "Send Friend Request" button
+const sendFriendRequestButton = document.querySelector('#send_friend_request');
+sendFriendRequestButton.addEventListener('click', () => {
+  const friendNameInput = document.querySelector('#friend_name');
+  const friendEmailInput = document.querySelector('#friend_email');
+  const friendName = friendNameInput.value.trim();
+  const friendEmail = friendEmailInput.value.trim();
+
+  // Create a new friend object
+  const newFriend = { name: friendName, email: friendEmail };
+
+  // Add new friend to friends list
+  friends.push(newFriend);
+  const newFriendHTML = `
+    <div class="friend">
+      <img src="images/friend.jpg" alt="Friend">
+      <span class="friend_name">${newFriend.name}</span>
+      <span class="friend_email">${newFriend.email}</span>
+      <button class="remove_friend_button">Remove Friend</button>
+    </div>
+  `;
+  friendsList.insertAdjacentHTML('beforeend', newFriendHTML);
+
+  // Clear input fields
+  friendNameInput.value = '';
+  friendEmailInput.value = '';
+
+  // Close add friend modal
+  const addFriendModal = document.querySelector('#add_friend_modal');
+  addFriendModal.style.display = 'none';
+});
+
+// Add an event listener to each remove friend button
+friendsList.addEventListener('click', (e) => {
+  if (e.target.classList.contains('remove_friend_button')) {
+    // Get the parent element of the button (the friend element)
+    const friendElement = e.target.parentElement;
+    // Remove the friend element from the friends list
+    friendsList.removeChild(friendElement);
+
+    // Update friends array
+    const friendIndex = friends.findIndex((friend) => friend.name === friendElement.querySelector('.friend_name').textContent);
+    if (friendIndex !== -1) {
+      friends.splice(friendIndex, 1);
     }
-  });
+  }
+});
