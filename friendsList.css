@@ -17,8 +17,8 @@
   /* Header Styles */
   
   header {
-    background-color: #333;
-    color: #fff;
+    background-color: #032B44; /* Drexel Blue */
+    color: #F7DC6F; /* Drexel Yellow */
     padding: 1em;
     text-align: center;
   }
@@ -26,6 +26,7 @@
   header .greeting {
     font-size: 1.5em;
     margin-bottom: 0.5em;
+    color: #F7DC6F; /* Drexel Yellow */
   }
   
   header form {
@@ -41,6 +42,8 @@
     border: none;
     border-radius: 0.5em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #F7DC6F; /* Drexel Yellow */
+    color: #032B44; /* Drexel Blue */
   }
   
   header img {
@@ -62,7 +65,7 @@
   }
   
   main .friends_header {
-    background-color: #f7f7f7;
+    background-color: #F7DC6F; /* Drexel Yellow */
     padding: 1em;
     border-bottom: 1px solid #ddd;
   }
@@ -70,11 +73,12 @@
   main .friends_header h1 {
     font-size: 2em;
     margin-bottom: 0.5em;
+    color: #032B44; /* Drexel Blue */
   }
   
   main .friends_header button {
-    background-color: #333;
-    color: #fff;
+    background-color: #032B44; /* Drexel Blue */
+    color: #F7DC6F; /* Drexel Yellow */
     padding: 0.5em 1em;
     border: none;
     border-radius: 0.5em;
@@ -102,6 +106,7 @@
   main .friends_list .friend .friend_name {
     font-size: 1.5em;
     margin-bottom: 0.5em;
+    color: #032B44; /* Drexel Blue */
   }
   
   main .friends_list .friend .friend_email {
@@ -126,7 +131,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #fff;
+    background-color: #F7DC6F; /* Drexel Yellow */
     padding: 1em;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -135,30 +140,10 @@
   .modal_content h2 {
     font-size: 2em;
     margin-bottom: 0.5em;
+    color: #032B44; /* Drexel Blue */
   }
   
   .modal_content form {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 1em;
-  }
-  
-  .modal_content input[type="text"] {
-    width: 100%;
-    padding: 0.5em;
-    font-size: 1em;
-    border: none;
-    border-radius: 0.5em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 1em;
-  }
-  
-  .modal_content button {
-    background-color: #333;
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
+    flex-direction
   }
