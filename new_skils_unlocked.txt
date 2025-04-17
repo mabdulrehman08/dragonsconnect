@@ -1,6 +1,7 @@
 Hey so this is dragonsconnect team and this is what learned while doing this project 
 Muhammad Abdulrehman
-I watched these tutoroials and read the following documentations
+For the week 2 i watched these videos and got the basic conecept of flask. Went thorught these documentations
+planned how to create flask
 https://youtu.be/Z1RJmh_OqeA
 https://flask.palletsprojects.com/en/stable/tutorial/layout/
 
