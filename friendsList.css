@@ -93,21 +93,19 @@ body {
   
   .friend_name {
     font-weight: bold;
-    margin-right: 1em;
+    margin-right: 2em; /* increased margin to space out remove friend button */
     color: #002B7F; /* Drexel blue */
   }
   
   .remove_friend_button {
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
+    display: inline-block;
+    background-color: gold;
+    color: black;
+    padding: 2px 6px;
+    border-radius: 6px;
+    margin: 2px;
+    font-size: 12px;
     cursor: pointer;
-  }
-  
-  .remove_friend_button:hover {
-    background-color: #c0392b;
   }
   
   #add_friend_modal {
