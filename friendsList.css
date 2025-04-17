@@ -17,8 +17,8 @@
   /* Header Styles */
   
   header {
-    background-color: #032B44; /* Drexel Blue */
-    color: #F7DC6F; /* Drexel Yellow */
+    background-color: #0A246A; /* Drexel Blue */
+    color: #F7DC6F; /* Drexel Gold */
     padding: 1em;
     text-align: center;
   }
@@ -26,7 +26,7 @@
   header .greeting {
     font-size: 1.5em;
     margin-bottom: 0.5em;
-    color: #F7DC6F; /* Drexel Yellow */
+    color: #F7DC6F; /* Drexel Gold */
   }
   
   header form {
@@ -42,8 +42,8 @@
     border: none;
     border-radius: 0.5em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    background-color: #F7DC6F; /* Drexel Yellow */
-    color: #032B44; /* Drexel Blue */
+    background-color: #F7DC6F; /* Drexel Gold */
+    color: #0A246A; /* Drexel Blue */
   }
   
   header img {
@@ -65,7 +65,7 @@
   }
   
   main .friends_header {
-    background-color: #F7DC6F; /* Drexel Yellow */
+    background-color: #F7DC6F; /* Drexel Gold */
     padding: 1em;
     border-bottom: 1px solid #ddd;
   }
@@ -73,12 +73,12 @@
   main .friends_header h1 {
     font-size: 2em;
     margin-bottom: 0.5em;
-    color: #032B44; /* Drexel Blue */
+    color: #0A246A; /* Drexel Blue */
   }
   
   main .friends_header button {
-    background-color: #032B44; /* Drexel Blue */
-    color: #F7DC6F; /* Drexel Yellow */
+    background-color: #0A246A; /* Drexel Blue */
+    color: #F7DC6F; /* Drexel Gold */
     padding: 0.5em 1em;
     border: none;
     border-radius: 0.5em;
@@ -106,7 +106,7 @@
   main .friends_list .friend .friend_name {
     font-size: 1.5em;
     margin-bottom: 0.5em;
-    color: #032B44; /* Drexel Blue */
+    color: #0A246A; /* Drexel Blue */
   }
   
   main .friends_list .friend .friend_email {
@@ -131,7 +131,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #F7DC6F; /* Drexel Yellow */
+    background-color: #F7DC6F; /* Drexel Gold */
     padding: 1em;
     border: 1px solid #ddd;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -140,10 +140,12 @@
   .modal_content h2 {
     font-size: 2em;
     margin-bottom: 0.5em;
-    color: #032B44; /* Drexel Blue */
+    color: #0A246A; /* Drexel Blue */
   }
   
   .modal_content form {
     display: flex;
-    flex-direction
+    flex-direction: column;
+    align-items: center;
+    padding: 1em;
   }
