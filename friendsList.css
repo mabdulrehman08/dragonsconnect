@@ -1,0 +1,121 @@
+body {
+    font-family: 'Space Mono', monospace;
+    background-color: #f7f7f7; 
+}
+
+#top_bar {
+    background-color: #002B7F; 
+    color: #FFFFFF;
+    padding: 1em;
+    text-align: center;
+}
+
+#top_bar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.page_container {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.friends_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.friends_header h1 {
+    color: #002B7F; 
+}
+
+#add_friend_button {
+    background-color: #002B7F; 
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#add_friend_button:hover {
+    background-color: #0047AB; 
+}
+
+.friends_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.friend {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #DDDDDD;
+}
+
+.friend img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.friend_name {
+    font-weight: bold;
+    color: #333333;
+}
+
+#add_friend_modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#add_friend_modal .modal_content {
+    background-color: #FFFFFF;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #DDDDDD;
+    border-radius: 10px;
+    width: 50%;
+}
+
+#add_friend_modal .modal_content h2 {
+    color: #002B7F; 
+}
+
+#add_friend_modal input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #DDDDDD;
+}
+
+#send_friend_request {
+    background-color: #002B7F; 
+    color: #FFFFFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#send_friend_request:hover {
+    background-color: #0047AB; 
+}
