@@ -1,71 +1,180 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DragonsConnect</title>
-  <link rel="stylesheet" href="static\css\dashboard.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> DragonsConnect </title>
+    <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="static\css\dashboard.css">
+    <script src="https://kit.fontawesome.com/9861975642.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-  <nav class="top-nav">
-    <div class="nav-left">
-      <img src="logo.png" class="logo" alt="Logo">
-    </div>
-    <div class="search-bar">
-      <input type="text" placeholder="Search DragonsConnect..." />
-    </div>
-    <div class="nav-right">
-      <img src="notifications.png" alt="Notifications">
-      <img src="inbox.png" alt="Messages">
-      <img src="friends.png" alt="Friends">
-      <div class="profile-pic online">
-        <img src="selfie.jpg" alt="Profile">
-      </div>
-    </div>
-  </nav>
+    <nav>
+        <div class="nav-left">
+            <a href="#"><img src="logo.png" class="logo"></a>
+            <ul>
+                <li><img src="notifications.png"></li>
+                <li><img src="inbox.png"></li>
+                <li><img src="requests.png"></li>
+            </ul>
+        </div>
+        <div class="nav-right">
+            
+            <div class="search-box">
+                <img src="search.png">
+                <input type="text" placeholder="Search">
+            </div>
+            <div class="nav-user-icon online">
+                <img src="selfie.jpg">
+            </div>
 
-  <div class="main-container">
-    <!-- Left Sidebar -->
-    <div class="sidebar">
-      <div class="menu-item"><img src="icons/news.png"><span>Latest News</span></div>
-      <div class="menu-item"><img src="icons/friends.png"><span>Friends</span></div>
-      <div class="menu-item"><img src="icons/group.png"><span>Groups</span></div>
-      <div class="menu-item"><img src="icons/store.png"><span>Marketplace</span></div>
-      <div class="menu-item"><img src="icons/watch.png"><span>Watch</span></div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-----------left-sidebar---------->
+        <div class="left-sidebar">
+            <div class="imp-links">
+                <a href="#"><img src="timeline.png"> Timeline</a>
+                <a href="#"><img src="messages.png"> Messages</a>
+                <a href="#"><img src="friends.png"> Friends</a>
+                <a href="#"><img src="settings.png"> Settings</a>
+                <a href="#"> See More</a>
+            </div>
+            <div class="important">
+                <p>Important</p>
+                <a href="https://dragonlink.drexel.edu/"><img src="events.png">DragonLink</a>
+                <a href="https://drexel.edu/studentlife/campus-living/housing/options"><img src="dorms.png">Dorms</a>
+                <a href="https://drexel.campusdish.com/"><img src="dining.png">Food</a>
+                <a href="https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Documents/campus-maps/drexel-university-uc.pdf"><img src="map.png">Map</a>
+            </div>
+        </div>
+        <!-----------main-content---------->
+        <div class="main-content">
+            <div class="recommended-people">
+                <h3>Recommended For You</h3>
+                <div class="people-grid-horizontal">
+                    <div class="profile-card">
+                        <img src="user1.png" alt="Jess">
+                        <p class="username">Jess, 18</p>
+                        <p class="match-info">Likes hiking & boba 🧋</p>
+                        <button class="connect-btn">Connect</button>
+                    </div>
+                    <div class="profile-card">
+                        <img src="user2.png" alt="Kofi">
+                        <p class="username">Kofi, 19</p>
+                        <p class="match-info">Gamer 🎮 | Music lover</p>
+                        <button class="connect-btn">Connect</button>
+                    </div>
+                    <div class="profile-card">
+                        <img src="user3.png" alt="Lina">
+                        <p class="username">Lina, 18</p>
+                        <p class="match-info">Coffee + Bookworm 📚</p>
+                        <button class="connect-btn">Connect</button>
+                    </div>
+                </div>
+            </div>
+            <div class="write-post-container">
+                <div class="user-profile">
+                    <img src="selfie.jpg">
+                    <div>
+                        <p>Amy</p>
+                        <small>Public <i class="fa-solid fa-caret-down"></i></small>
+                    </div>
+                </div>
+                <div class="post-input-container">
+                    <textarea rows="3" placeholder="What's on your mind?"></textarea>
+                    <div class="add-post-links">
+                        <a href="#"><img src="post.png"> Post</a>
+                    </div>
+                
+                </div>
+            </div>
+            
+            <div class="post-container">
+                <div class="user-profile">
+                    <img src="selfie.jpg">
+                    <div>
+                        <p>Amy</p>
+                        <span>April 12, 2025, 12:33 PM</span>
+                    </div>
+                </div>
+                <p class="post-text">Can't wait to meet a lot of people at Drexel! Class of 2030 incoming!</p>
+                <img src="feed-image-1.png" class="post-img">
+
+                <div class="post-row">
+                    <div class="activity-icons">
+                        <div><img src="like.png"> 5</div>
+                        <div><img src="comment.png"> 2</div>
+                        <div><img src="share.png"> 1</div>
+                    </div>
+                    <div class="post-profile-icon">
+                        <img src="selfie.jpg"> <i class="fa-solid fa-caret-down"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-----------right-sidebar---------->
+        <div class="right-sidebar">
+
+            <div class="sidebar-title">
+                <h4>Events</h4>
+                <a href="#">See All</a>
+            </div>
+            <div class="event">
+                <div class="left-event">
+                    <h3>22</h3>
+                    <span>April</span>
+                </div>
+                <div class="right-event">
+                    <h4>Drexel Kpop Club</h4>
+                    <p>Dance Workshop</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+            <div class="event">
+                <div class="left-event">
+                    <h3>24</h3>
+                    <span>April</span>
+                </div>
+                <div class="right-event">
+                    <h4>Women In Computing Society</h4>
+                    <p>Resume Review & LinkedIn Portfolio</p>
+                    <a href="#">More Info</a>
+                </div>
+            </div>
+            <div class="sidebar-title">
+                <h4>Drexel University</h4>
+            </div>
+            <img src="drexel.png" class="sidebar-school">
+            
+            <div class="sidebar-title">
+                <h4>Conversation</h4>
+                <a href="#">Hide Chat</a>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="person1.png">
+                </div>
+                <p>Person 1</p>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="person2.png">
+                </div>
+                <p>Person 2</p>
+            </div>
+            <div class="online-list">
+                <div class="online">
+                    <img src="person3.png">
+                </div>
+                <p>Person 3</p>
+            </div>
+
+        </div>
     </div>
 
-    <!-- Feed -->
-    <div class="feed">
-      <div class="stories">
-        <div class="story-card"><img src="selfie.jpg" alt=""><p>You</p></div>
-        <div class="story-card"><img src="user1.jpg" alt=""><p>Alison</p></div>
-        <div class="story-card"><img src="user2.jpg" alt=""><p>Jackson</p></div>
-        <div class="story-card"><img src="user3.jpg" alt=""><p>Samona</p></div>
-      </div>
-
-      <div class="post-box">
-        <img src="selfie.jpg" class="avatar" alt="User Avatar" />
-        <input type="text" placeholder="What's on your mind?" />
-      </div>
-    </div>
-
-    <!-- Right Sidebar -->
-    <div class="right-sidebar">
-      <h4>Upcoming Events</h4>
-      <div class="event">
-        <p><strong>March 18:</strong> Social Media at Tech Park</p>
-        <a href="#">More Info</a>
-      </div>
-      <div class="event">
-        <p><strong>June 22:</strong> Mobile Marketing at Tech Park</p>
-        <a href="#">More Info</a>
-      </div>
-
-      <h4>Chat</h4>
-      <div class="chat-user"><img src="user1.jpg"><span>Alison</span></div>
-      <div class="chat-user"><img src="user2.jpg"><span>Jackson</span></div>
-    </div>
-  </div>
 </body>
 </html>
