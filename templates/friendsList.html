@@ -44,3 +44,42 @@
   <script src="/dragonsconnect/static/js/friendsList.js"></script>
 </body>
 </html>
+
+<!-- Add a new section for filters -->
+<section class="filters">
+  <h2>Filters</h2>
+  <form id="filter_form">
+    <label for="drexel_class">Drexel Graduating Class:</label>
+    <select id="drexel_class">
+      <option value="">All</option>
+      <!-- Add options for different graduating classes -->
+      <option value="2020">2020</option>
+      <option value="2021">2021</option>
+      <option value="2022">2022</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <label for="interests">Interests:</label>
+    <select id="interests" multiple>
+      <!-- Add options for different interests -->
+      <option value="Sports">Sports</option>
+      <option value="Music">Music</option>
+      <option value="Art">Art</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <label for="clubs">Clubs:</label>
+    <select id="clubs" multiple>
+      <!-- Add options for different clubs -->
+      <option value="Debating Club">Debating Club</option>
+      <option value="Photography Club">Photography Club</option>
+      <option value="Gaming Club">Gaming Club</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <!-- Add more filters as needed -->
+
+    <button id="apply_filters">Apply Filters</button>
+    <button id="clear_filters">Clear Filters</button>
+  </form>
+</section>

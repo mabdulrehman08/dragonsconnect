@@ -168,3 +168,25 @@ body {
   #send_friend_request:hover {
     background-color: #FFA07A; /* Drexel gold hover */
   }
+
+  .filters {
+    margin-top: 20px;
+  }
+  
+  .filters form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .filters label {
+    margin-right: 10px;
+  }
+  
+  .filters select {
+    margin-right: 20px;
+  }
+  
+  .filters button {
+    margin-top: 10px;
+  }
