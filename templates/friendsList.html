@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Friends List</title>
   <link rel="stylesheet" href="[https://fonts.googleapis.com/css2?family=Doppio+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap">]
-  <link rel="stylesheet" href="/dragonsconnect/static/css/friendsList.css">
+  <link rel="stylesheet" href="/static/css/friendsList.css">
 </head>
 <body>
   <header id="top_bar">
@@ -44,3 +44,48 @@
   <script src="/dragonsconnect/static/js/friendsList.js"></script>
 </body>
 </html>
+
+<!-- Add a new section for filters -->
+<section class="filters">
+  <h2>Filters</h2>
+  <form id="filter_form">
+    <label for="drexel_class">Drexel Graduating Class:</label>
+    <select id="drexel_class">
+      <option value="">All</option>
+         <!-- Add options for different graduating classes -->
+         <option value="2020">2024</option>
+         <option value="2021">2025</option>
+         <option value="2022">2026</option>
+         <option value="2022">2026</option>
+         <option value="2022">2027</option>
+         <option value="2022">2028</option>
+         <option value="2022">2029</option>
+         <option value="2022">2030</option>
+   
+      <!-- Add more options as needed -->
+    </select>
+
+    <label for="interests">Interests:</label>
+    <select id="interests" multiple>
+      <!-- Add options for different interests -->
+      <option value="Sports">Sports</option>
+      <option value="Music">Music</option>
+      <option value="Art">Art</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <label for="clubs">Clubs:</label>
+    <select id="clubs" multiple>
+      <!-- Add options for different clubs -->
+      <option value="Debating Club">Debating Club</option>
+      <option value="Photography Club">Photography Club</option>
+      <option value="Gaming Club">Gaming Club</option>
+      <!-- Add more options as needed -->
+    </select>
+
+    <!-- Add more filters as needed -->
+
+    <button id="apply_filters">Apply Filters</button>
+    <button id="clear_filters">Clear Filters</button>
+  </form>
+</section>

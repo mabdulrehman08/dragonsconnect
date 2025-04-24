@@ -68,3 +68,65 @@ friendsList.addEventListener('click', (e) => {
     friendsList.removeChild(friendElement);
   }
 });
+
+// Get the filter form and buttons
+const filterForm = document.getElementById('filter_form');
+const applyFiltersButton = document.getElementById('apply_filters');
+const clearFiltersButton = document.getElementById('clear_filters');
+
+// Get the friends list container
+const friendsListContainer = document.querySelector('.friends_list');
+
+// Define the filtering logic
+function applyFilters() {
+  const drexelClass = document.getElementById('drexel_class').value;
+  const interests = Array.from(document.getElementById('interests').selectedOptions).map(option => option.value);
+  const clubs = Array.from(document.getElementById('clubs').selectedOptions).map(option => option.value);
+
+  // Filter the friends list based on the selected filters
+  const filteredFriends = friendsList.filter(friend => {
+    // Filter by Drexel graduating class
+    if (drexelClass && friend.drexelClass !== drexelClass) return false;
+
+    // Filter by interests
+    if (interests.length > 0 && !interests.some(interest => friend.interests.includes(interest))) return false;
+
+    // Filter by clubs
+    if (clubs.length > 0 && !clubs.some(club => friend.clubs.includes(club))) return false;
+
+    return true;
+  });
+
+  // Update the friends list container with the filtered friends
+  friendsListContainer.innerHTML = '';
+  filteredFriends.forEach(friend => {
+    const friendHTML = `
+      <div>
+        <h2>${friend.name}</h2>
+        <p>Drexel Class: ${friend.drexelClass}</p>
+        <p>Interests: ${friend.interests.join(', ')}</p>
+        <p>Clubs: ${friend.clubs.join(', ')}</p>
+      </div>
+    `;
+    friendsListContainer.insertAdjacentHTML('beforeend', friendHTML);
+  });
+}
+
+// Define the clear filters logic
+function clearFilters() {
+  // Reset the filter form
+  filterForm.reset();
+}
+  // Update the friends list container with the original friends list
+friendsListContainer.innerHTML = '';
+friendsList.forEach(friend => {
+  const friendHTML = `
+    <div>
+      <h2>${friend.name}</h2>
+      <p>Drexel Class: ${friend.drexelClass}</p>
+      <p>Interests: ${friend.interests.join(', ')}</p>
+      <p>Clubs: ${friend.clubs.join(', ')}</p>
+    </div>
+  `;
+  friendsListContainer.insertAdjacentHTML('beforeend', friendHTML);
+});
