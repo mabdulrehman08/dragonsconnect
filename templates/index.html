@@ -1,47 +1,88 @@
-
-<!doctype html>
-<html>
+<!-- <!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8"/>
-	<meta name="viewport" content="width=device-width" />
-	<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-	<title>Dragons Connect</title>
-	<link rel="stylesheet" href="style.css">
-    <!-- <script defer src="auth.js"></script> #links js file -->
-	<!-- <script src="auth.js"></script> Link your authentication script -->
-
-	
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>DragonsConnect</title>
+    <link rel="stylesheet" href="/dragonsconnect/static/css/styles.css">
 </head>
 <body>
-	<header>
-		<nav>
-			<div class = "DragonsConnect"><h1>DragonsConnect</h1></div>
-
-		<div class="login-sec">
-			<a href = "signup.html"><button>Sign Up</button></a>
-			<a href = "login.html"><button>Login</button></a>
-		</div>
-	</nav>
-
-	 <div class="home-content">
-		<div class="home-container">
-			<h2>Your Gateway to Campus Connections</h2>
-		</div>
-	 </div>
-	</header>
-
-<footer>
-	<div class = "links">
-		<ul>
-			<li><a href="Modifying.html"><button class="nav">Modify Profile</button></a></li>
-			<li><a class= "active" href = "#"><button class="nav">Services</button></a></li>
-			<li><a href = "#"><button class="nav">Contact</button></a></li>
-			<li><a href = "profile.html"><button class="nav">Delete My Account</button></a></li>
-		</ul>
-	</div>
-</footer>
-    <p id="message"></p> 
+    <header>
+        <nav>
+            <div class="DragonsConnect"><h1>DragonsConnect</h1></div>
+            <div class="login-sec">
+                <a href="signup.html">Sign Up</a>
+                <a href="login.html">Login</a>
+            </div>
+        </nav>
+        <div class="home-content">
+            <div class="home-container">
+                <h2>Your Gateway to Campus Connections</h2>
+            </div>
+        </div>
+    </header>
+    <footer>
+        <div class="links">
+            <ul>
+                <li><a href="Modifying.html">Modify Profile</a></li>
+                <li><a href="#" class="active">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="profile.html">Delete My Account</a></li>
+            </ul>
+        </div>
+    </footer>
+    <p id="message"></p>
 </body>
 </html>
-
+ -->
+<!-- ---------------------------------------------------------new stuff -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <title>DragonsConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="DragonsConnect"><h1>DragonsConnect</h1></div>
+            <div class="login-sec">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('signup') }}">Sign Up</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+        <div class="home-content">
+            <div class="home-container">
+                <h2>Your Gateway to Campus Connections</h2>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <p class="{{ category }}">{{ message }}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+        </div>
+    </header>
+    <footer>
+        <div class="links">
+            <ul>
+                <li><a href="{{ url_for('modify') }}">Modify Profile</a></li>
+                <li><a href="{{ url_for('services') }}" class="active">Services</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="{{ url_for('profile') }}">Delete My Account</a></li>
+            </ul>
+        </div>
+    </footer>
+    <p id="message"></p>
+</body>
+</html>

@@ -1,159 +1,142 @@
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
-*{
-	margin: 0;
-	padding: auto;
-	box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-
 
 body {
-	width: 100%;
-	height: 100vh;
-	background: url("images/back.jpg");
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	color:#efeee5;
-	font-family: "Space Mono", serif;
-	font-weight: 400;
-  	font-style: bold;
-	text-decoration: none;
-}
-nav{
-	width: 100%;
-	padding: 2rem 5rem 2rem 5rem;
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
+    width: 100%;
+    height: 100vh;
+    background: url("../images/back.jpg") no-repeat center/cover;
+    color: #efeee5;
+    font-family: "Space Mono", serif;
+    font-weight: 400;
 }
 
-.logo h1{
-	font-size: 27px;
-	color:#5b6d92;
+nav {
+    width: 100%;
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-ul {
-	list-style: none;
-	display: flex;
-	gap: 3rem;
-	color:#efeee5;
-	font-family: "Space Mono", serif;
-	font-weight: 400;
-  	font-style: bold;
+.DragonsConnect h1 {
+    font-size: 27px;
+    color: #5b6d92;
 }
 
-li a{
-	color: #efeee5;
-	font-size: 18px;
-	font-weight: 600;
-	text-decoration: none;
-	border-radius: 25px;
-	padding: 10px 15px;
-	transition: 0.6s;
-	font-family: "Space Mono", serif;
-	font-weight: 400;
-  	font-style: bold;
-}
-
-li a:hover{
-	background-color: transparent;
-	color: black;
-}
-
-.active{
-	background-color: transparent;
-}
-
-button {
-	border: transparent;
-	padding: 10px 15px;
+.login-sec a {
+    display: inline-block;
+    padding: 10px 15px;
     border-radius: 5px;
     color: #efeee5;
-	font-size: 18px;
-	font-weight: 600;
-    background: transparent;
     font-size: 18px;
-	transition: 0.6s;
-	font-family: "Space Mono", serif;
-	font-weight: 400;
-  	font-style: bold;
+    font-weight: 600;
+    text-decoration: none;
+    background: transparent;
+    transition: background-color 0.6s, color 0.6s;
 }
 
-button:hover {
-	background-color: #FFDF00;
-	color: black;
+.login-sec a:hover {
+    background-color: #FFDF00;
+    color: black;
 }
 
-footer {
-	background-color: transparent;
-	color: white;
-	position: fixed;
-	bottom: 0;
+.home-content {
+    padding: 2rem 5rem;
+    display: flex;
+    align-items: center;
+    height: 70vh;
 }
 
-footer button {
-	border-radius: 5px;
-	padding: 10px 15px;
-}
-
-.home-content{
-	padding: 2rem 5rem 2rem 5rem;
-	display: flex;
-	align-items: center;
-	height: 70vh;
-}
-
-.home-container{
-	align-items: center;
-	width: 600px;
-}
-
-.login-sec a{
-	text-decoration: none;
-	color: #efeef5;
-}
-
-.login-sec a:hover{
-	background-color: transparent;
-	color: black;
-}
-
-.home-container h1{
-	text-align: center;
-	color: #5b6d92;
-	font-size: 5rem;
-	padding-bottom: 30px;
-}
-
-.home-container p{
-	text-align: center;
-	color: #5b6d92;
-	padding-bottom: 20px;
-}
-
-.user-setting p{
-	text-align: center;
-	color: #5b6d92;
-	font-size: 5rem;
-	padding-bottom: 30px;	
-}
-
-.wrap {
+.home-container {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 600px;
 }
 
-#explore{
-	margin-left: 20px;
+.home-container h2 {
+    text-align: center;
+    color: #5b6d92;
+    font-size: 5rem;
+    padding-bottom: 30px;
 }
 
-.content {
-	position: relative;
-	z-index: 1;
-	padding: 40px;
-	text-align: center;
-	background: rgba(0, 0, 0, 0.4); 
-  }
-  
+footer {
+    background-color: transparent;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem 0;
+    text-align: center;
+}
+
+footer ul {
+    list-style: none;
+    display: flex;
+    gap: 3rem;
+    justify-content: center;
+}
+
+footer a {
+    color: #efeee5;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 25px;
+    padding: 10px 15px;
+    transition: background-color 0.6s, color 0.6s;
+}
+
+footer a:hover {
+    background-color: #FFDF00;
+    color: black;
+}
+
+.active {
+    background-color: #FFDF00;
+    color: black;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+form input, form button {
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid #efeee5;
+    background: rgba(255, 255, 255, 0.1);
+    color: #efeee5;
+}
+
+form button {
+    background: #5b6d92;
+    color: #efeee5;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #FFDF00;
+    color: black;
+}
+
+.success {
+    color: #FFDF00;
+    text-align: center;
+}
+
+.error {
+    color: #ff4d4d;
+    text-align: center;
+}

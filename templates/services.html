@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <title>Services - DragonsConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="DragonsConnect"><h1>DragonsConnect</h1></div>
+            <div class="login-sec">
+                {% if current_user.is_authenticated %}
+                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                {% else %}
+                    <a href="{{ url_for('signup') }}">Sign Up</a>
+                    <a href="{{ url_for('login') }}">Login</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+    <div class="services-content">
+        <div class="services-container">
+            <h2>Campus Services</h2>
+            <ul>
+                <li>Library Access: 24/7 study spaces</li>
+                <li>Career Services: Resume workshops</li>
+                <li>Student Events: INTRAMURALS AT DREXEL</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
