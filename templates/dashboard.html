@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> DragonsConnect </title>
     <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/static/css/dashboard.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/9861975642.js" crossorigin="anonymous"></script>
 </head>
 
@@ -15,13 +15,12 @@
         <div class="nav-left">
             <a href="#"><img src="logo.png" class="logo"></a>
             <ul>
-                <li><img src="/static/images/notifications.png"></li>
+                <li><img src="notifications.png"></li>
                 <li><img src="inbox.png"></li>
                 <li><img src="requests.png"></li>
             </ul>
         </div>
         <div class="nav-right">
-            
             <div class="search-box">
                 <img src="search.png">
                 <input type="text" placeholder="Search">
@@ -29,7 +28,9 @@
             <div class="nav-user-icon online">
                 <img src="selfie.jpg">
             </div>
-
+            <button id="theme-toggle" class="theme-toggle">
+                🌙
+            </button>            
         </div>
     </nav>
 
@@ -87,7 +88,7 @@
                 <div class="post-input-container">
                     <textarea rows="3" placeholder="What's on your mind?"></textarea>
                     <div class="add-post-links">
-                        <a href="#"><img src="post.png"> Post</a>
+                        <a href="#" class="post-btn"><img src="post.png"> Post</a>
                     </div>
                 
                 </div>
@@ -125,7 +126,7 @@
             </div>
             <div class="event">
                 <div class="left-event">
-                    <h3>22</h3>
+                    <h3>26</h3>
                     <span>April</span>
                 </div>
                 <div class="right-event">
@@ -136,7 +137,7 @@
             </div>
             <div class="event">
                 <div class="left-event">
-                    <h3>24</h3>
+                    <h3>28</h3>
                     <span>April</span>
                 </div>
                 <div class="right-event">
@@ -158,23 +159,31 @@
                 <div class="online">
                     <img src="person1.png">
                 </div>
-                <p>Person 1</p>
+                <p>Alissa</p>
             </div>
             <div class="online-list">
                 <div class="online">
                     <img src="person2.png">
                 </div>
-                <p>Person 2</p>
+                <p>Joe</p>
             </div>
             <div class="online-list">
                 <div class="online">
                     <img src="person3.png">
                 </div>
-                <p>Person 3</p>
+                <p>Rachel</p>
             </div>
 
         </div>
     </div>
-
+    <script>
+        const toggle = document.getElementById('theme-toggle');
+        const body = document.body;
+    
+        toggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            toggle.textContent = body.classList.contains('dark-mode') ? '☀️' : '🌙';
+        });
+    </script>
 </body>
 </html>
