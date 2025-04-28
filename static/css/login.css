@@ -1,4 +1,4 @@
-/*style.css*/
+/* static/css/login.css */
 @import url("https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap");
 
 body {
@@ -11,12 +11,12 @@ body {
     margin: 0;
     font-family: "Space Mono", serif;
     font-weight: 400;
-  	font-style: bold;
-	text-decoration: none;
-    background: url("images/back.jpg");
+    font-style: bold;
+    text-decoration: none;
+    background: url("../images/back.jpg");
     background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+    background-position: center;
+    background-size: cover;
 }
 
 .main {
@@ -25,7 +25,8 @@ body {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
     position: fixed;
-    top: 160px; right: 30px;
+    top: 160px;
+    right: 30px;
     transition: transform 0.2s;
     width: 500px;
     text-align: center;
@@ -82,4 +83,14 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
 }

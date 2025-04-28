@@ -4,4 +4,6 @@ For the week 2 i watched these videos and got the basic conecept of flask. Went 
 planned how to create flask
 https://youtu.be/Z1RJmh_OqeA
 https://flask.palletsprojects.com/en/stable/tutorial/layout/
+fixed all new files / folders
+27ad10a8fed2439ffed2d72cce95fd45 - secret key for database 
 

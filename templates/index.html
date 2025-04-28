@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -62,7 +62,7 @@
             <div class="DragonsConnect"><h1>DragonsConnect</h1></div>
             <div class="login-sec">
                 {% if current_user.is_authenticated %}
-                    <a href="{{ url_for('profile') }}">Profile</a>
+                    <a href="{{ url_for('profile.') }}">Profile</a>
                     <a href="{{ url_for('logout') }}">Logout</a>
                 {% else %}
                     <a href="{{ url_for('signup') }}">Sign Up</a>
