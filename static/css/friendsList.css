@@ -1,4 +1,4 @@
-/* friendsList.css */
+
 
 body {
     font-family: 'Space Mono', monospace;
@@ -6,7 +6,7 @@ body {
   }
   
   #top_bar {
-    background-color: #002B7F; /* Drexel blue */
+    background-color: #002B7F; 
     color: #fff;
     padding: 1em;
     text-align: center;
@@ -55,12 +55,12 @@ body {
   
   .friends_header h1 {
     margin: 0;
-    color: #002B7F; /* Drexel blue */
+    color: #002B7F; 
   }
   
   #add_friend_button {
-    background-color: #FFC080; /* Drexel gold */
-    color: #002B7F; /* Drexel blue */
+    background-color: #FFC080; 
+    color: #002B7F; 
     padding: 0.5em 1em;
     border: none;
     border-radius: 0.5em;
@@ -68,7 +68,7 @@ body {
   }
   
   #add_friend_button:hover {
-    background-color: #FFA07A; /* Drexel gold hover */
+    background-color: #FFA07A; 
   }
   
   .friends_list {
@@ -94,7 +94,7 @@ body {
   .friend_name {
     font-weight: bold;
     margin-right: 1em;
-    color: #002B7F; /* Drexel blue */
+    color: #002B7F; 
   }
   
   .remove_friend_button {
@@ -135,7 +135,7 @@ body {
   
   #add_friend_modal .modal_content h2 {
     margin-top: 0;
-    color: #002B7F; /* Drexel blue */
+    color: #002B7F; 
   }
   
   #add_friend_form {
@@ -157,8 +157,8 @@ body {
   }
   
   #send_friend_request {
-    background-color: #FFC080; /* Drexel gold */
-    color: #002B7F; /* Drexel blue */
+    background-color: #FFC080; 
+    color: #002B7F; 
     padding: 0.5em 1em;
     border: none;
     border-radius: 0.5em;
@@ -166,7 +166,7 @@ body {
   }
   
   #send_friend_request:hover {
-    background-color: #FFA07A; /* Drexel gold hover */
+    background-color: #FFA07A; 
   }
 
   .filters {
