@@ -3,3 +3,14 @@ https://www.realtimecolors.com/dashboard?colors=1d1b02-fefeed-f1f221-1b0cb8-4df5
 https://www.realtimecolors.com/?colors=1d1b02-fefeed-f1f221-1b0cb8-4df5a5&fonts=Podkova-Podkova
 https://www.realtimecolors.com/dashboard?colors=0c0e11-eff5fe-07294D-FFC600-2263c5&fonts=Judson-Judson
 https://www.realtimecolors.com/?colors=0b090f-faf9fc-7d6da8-cebcad-237882&fonts=Inter-Inter
+
+
+text = #090e07  
+background = #f6faf5
+flip these two for dark mode
+
+
+
+buttons = #ffd900
+secondary = #7e8cb9 (Accent- Top bar)
+icons = #a9c3d1
