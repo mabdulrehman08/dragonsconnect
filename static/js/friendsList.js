@@ -12,7 +12,7 @@ const friendsList = document.querySelector('.friends_list');
 friends.forEach((friend) => {
   const friendHTML = `
     <div class="friend">
-      <img src="images/friend.jpg" alt="Friend">
+      <img src="/static/images/friend.jpg" alt="Friend">
       <span class="friend_name">${friend.name}</span>
       <span class="friend_email">${friend.email}</span>
       <button class="remove_friend_button">Remove Friend</button>
