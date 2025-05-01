@@ -6,27 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> DragonsConnect </title>
     <link href="https://fonts.googleapis.com/css2?family=Doppio+One&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="~/static/css/styles.css">
     <script src="https://kit.fontawesome.com/9861975642.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
     <nav>
         <div class="nav-left">
-            <a href="#"><img src="logo.png" class="logo"></a>
+            <a href="#"><img src="~/static/images/logo.png" class="logo"></a>
             <ul>
-                <li><img src="notifications.png"></li>
-                <li><img src="inbox.png"></li>
-                <li><img src="requests.png"></li>
+                <li><img src="~/static/images/notifications.png"></li>
+                <li><img src="~/static/images/inbox.png"></li>
+                <li><img src="~/static/images/requests.png"></li>
             </ul>
         </div>
         <div class="nav-right">
             <div class="search-box">
-                <img src="search.png">
+                <img src="~/static/images/search.png">
                 <input type="text" placeholder="Search">
             </div>
             <div class="nav-user-icon online" onclick="settingsMenuToggle()">
-                <img src="selfie.jpg">
+                <img src="~/static/images/selfie.jpg">
             </div>          
         </div>
     <!-------------settings-menu-------------------->
@@ -36,7 +36,7 @@
             </div>
             <div class="settings-menu-inner">
                 <div class="user-profile header">
-                    <img src="selfie.jpg">
+                    <img src="~/static/images/selfie.jpg">
                     <div>
                         <p> Hi, Amy!</p> <!--Replace once account management is implemented-->
                         <a href="#">See your profile</a>
@@ -44,7 +44,7 @@
                 </div>
                 <hr>
                 <div class="user-profile header">
-                    <img src="feedback.png">
+                    <img src="~/static/images/feedback.png">
                     <div>
                         <p> Give Feedback</p>
                         <a href="#">Want to help us improve?</a>
@@ -52,19 +52,19 @@
                 </div>
                 <hr>
                 <div class="settings-links">
-                    <img src="settings.png" class="settings-icon">
+                    <img src="~/static/images/settings.png" class="settings-icon">
                     <a href="#">Settings & Privacy</a>
                 </div>
                 <div class="settings-links">
-                    <img src="help.png" class="settings-icon">
+                    <img src="~/static/images/help.png" class="settings-icon">
                     <a href="#">Help & Support</a>
                 </div>
                 <div class="settings-links">
-                    <img src="display.png" class="settings-icon">
+                    <img src="~/static/images/display.png" class="settings-icon">
                     <a href="#">Display & Accessibility</a>
                 </div>
                 <div class="settings-links">
-                    <img src="logout.png" class="settings-icon">
+                    <img src="~/static/images/logout.png" class="settings-icon">
                     <a href="#">Logout</a>
                 </div>
             </div>
@@ -75,18 +75,18 @@
         <!-----------left-sidebar---------->
         <div class="left-sidebar">
             <div class="imp-links">
-                <a href="#"><img src="timeline.png"> Timeline</a>
-                <a href="#"><img src="messages.png"> Messages</a>
-                <a href="#"><img src="friends.png"> Friends</a>
-                <a href="#"><img src="settings.png"> Settings</a>
+                <a href="#"><img src="~/static/images/timeline.png"> Timeline</a>
+                <a href="#"><img src="~/static/images/messages.png"> Messages</a>
+                <a href="#"><img src="~/static/images/friends.png"> Friends</a>
+                <a href="#"><img src="~/static/images/settings.png"> Settings</a>
                 <a href="#"> See More</a>
             </div>
             <div class="important">
                 <p>Important</p>
-                <a href="https://dragonlink.drexel.edu/"><img src="events.png">DragonLink</a>
-                <a href="https://drexel.edu/studentlife/campus-living/housing/options"><img src="dorms.png">Dorms</a>
-                <a href="https://drexel.campusdish.com/"><img src="dining.png">Food</a>
-                <a href="https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Documents/campus-maps/drexel-university-uc.pdf"><img src="map.png">Map</a>
+                <a href="https://dragonlink.drexel.edu/"><img src="~/static/images/events.png">DragonLink</a>
+                <a href="https://drexel.edu/studentlife/campus-living/housing/options"><img src="~/static/images/dorms.png">Dorms</a>
+                <a href="https://drexel.campusdish.com/"><img src="~/static/images/dining.png">Food</a>
+                <a href="https://drexel.edu/~/media/Drexel/Core-Site-Group/Core/Documents/campus-maps/drexel-university-uc.pdf"><img src="~/static/images/map.png">Map</a>
             </div>
         </div>
         <!-----------main-content---------->
@@ -95,19 +95,19 @@
                 <h3>Recommended For You</h3>
                 <div class="people-grid-horizontal">
                     <div class="profile-card">
-                        <img src="user1.png" alt="Jess">
+                        <img src="~/static/images/user1.png" alt="Jess">
                         <p class="username">Jess, 18</p>
                         <p class="match-info">Likes hiking & boba 🧋</p>
                         <button class="connect-btn">Connect</button>
                     </div>
                     <div class="profile-card">
-                        <img src="user2.png" alt="Kofi">
+                        <img src="~/static/images/user2.png" alt="Kofi">
                         <p class="username">Kofi, 19</p>
                         <p class="match-info">Gamer 🎮 | Music lover</p>
                         <button class="connect-btn">Connect</button>
                     </div>
                     <div class="profile-card">
-                        <img src="user3.png" alt="Lina">
+                        <img src="~/static/images/user3.png" alt="Lina">
                         <p class="username">Lina, 18</p>
                         <p class="match-info">Coffee + Bookworm 📚</p>
                         <button class="connect-btn">Connect</button>
@@ -116,7 +116,7 @@
             </div>
             <div class="write-post-container">
                 <div class="user-profile">
-                    <img src="selfie.jpg">
+                    <img src="~/static/images/selfie.jpg">
                     <div>
                         <p>Amy</p>
                         <small>Public <i class="fa-solid fa-caret-down"></i></small>
@@ -125,7 +125,7 @@
                 <div class="post-input-container">
                     <textarea rows="3" placeholder="What's on your mind?"></textarea>
                     <div class="add-post-links">
-                        <a href="#" class="post-btn"><img src="post.png"> Post</a>
+                        <a href="#" class="post-btn"><img src="~/static/images/post.png"> Post</a>
                     </div>
                 
                 </div>
@@ -133,23 +133,23 @@
             
             <div class="post-container">
                 <div class="user-profile">
-                    <img src="selfie.jpg">
+                    <img src="~/static/images/selfie.jpg">
                     <div>
                         <p>Amy</p>
                         <span>April 12, 2025, 12:33 PM</span>
                     </div>
                 </div>
                 <p class="post-text">Can't wait to meet a lot of people at Drexel! Class of 2030 incoming!</p>
-                <img src="feed-image-1.png" class="post-img">
+                <img src="~/static/images/feed-image-1.png" class="post-img">
 
                 <div class="post-row">
                     <div class="activity-icons">
-                        <div><img src="like.png"> 5</div>
-                        <div><img src="comment.png"> 2</div>
-                        <div><img src="share.png"> 1</div>
+                        <div><img src="~/static/images/like.png"> 5</div>
+                        <div><img src="~/static/images/comment.png"> 2</div>
+                        <div><img src="~/static/images/share.png"> 1</div>
                     </div>
                     <div class="post-profile-icon">
-                        <img src="selfie.jpg"> <i class="fa-solid fa-caret-down"></i>
+                        <img src="~/static/images/selfie.jpg"> <i class="fa-solid fa-caret-down"></i>
                     </div>
                 </div>
             </div>
@@ -166,7 +166,7 @@
             <div class="sidebar-title">
                 <h4>Drexel University</h4>
             </div>
-            <img src="drexel.png" class="sidebar-school">
+            <img src="~/static/images/drexel.png" class="sidebar-school">
             
             <div class="sidebar-title">
                 <h4>Conversation</h4>
@@ -174,25 +174,25 @@
             </div>
             <div class="online-list">
                 <div class="online">
-                    <img src="person1.png">
+                    <img src="~/static/images/person1.png">
                 </div>
                 <p>Alissa</p>
             </div>
             <div class="online-list">
                 <div class="online">
-                    <img src="person2.png">
+                    <img src="~/static/images/person2.png">
                 </div>
                 <p>Joe</p>
             </div>
             <div class="online-list">
                 <div class="online">
-                    <img src="person3.png">
+                    <img src="~/static/images/person3.png">
                 </div>
                 <p>Rachel</p>
             </div>
 
         </div>
     </div>
-    <script src = "script.js"></script>
+    <script src = "~/static/js/script.js"></script>
 </body>
 </html>
