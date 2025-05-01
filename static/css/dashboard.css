@@ -8,7 +8,7 @@
 body {
     background: var(--body-color);
     transition: background 0.3s;
-    background-color: #faf9fc;
+    background-color: #f6faf5;
 }
 
 nav {
@@ -57,7 +57,7 @@ nav {
 }
 
 .search-box {
-    background: #faf9fc;
+    background: #f6faf5;
     width: 350px; 
     border-radius: 50px;
     display: flex;
@@ -120,7 +120,7 @@ nav {
     margin-right: 15px;
 }
 .imp-links a:last-child{
-    color: #1876f2;
+    color: #7e8cb9;
 }
 .imp-links{
     border-bottom: 1px solid #ccc;
@@ -147,7 +147,7 @@ nav {
 }
 .sidebar-title a{
     text-decoration: none;
-    color: #1876f2;
+    color: #7e8cb9;
     font-size: 12px;
 }
 .event{
@@ -172,7 +172,7 @@ nav {
 .event a{
     font-size:12px;
     text-decoration: none;
-    color: #1876f2;
+    color: #7e8cb9;
 }
 .left-event span{
     position: absolute;
@@ -338,7 +338,7 @@ nav {
     font-size: 15px;
 }
 .post-text a{
-    color: #1876f2;
+    color: #7e8cb9;
     text-decoration: none;
 }
 .post-img{
@@ -370,7 +370,7 @@ nav {
     margin-right: 5px;
 }
 :root {
-    --bg-color: #faf9fc;
+    --bg-color: #f6faf5;
     --text-color: #0b090f;
     --card-bg: #fff;
     --nav-bg: #cdbbac;
