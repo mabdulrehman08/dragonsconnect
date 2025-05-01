@@ -179,7 +179,7 @@ nav {
     bottom: 0;
     left: 0;
     width: 100%;
-    background: #237882;
+    background: #ffd900;
     color: #fff;
     font-size: 10px;
     padding: 4px 0;
@@ -228,7 +228,7 @@ nav {
     margin-bottom: 20px;
 }
 .profile-card {
-    background-color: #cdbbac;
+    background-color: #7e8cb9;
     border-radius: 20px;
     padding: 15px;
     width: 200px;
@@ -255,7 +255,7 @@ nav {
     margin-bottom: 10px;
 }
 .connect-btn {
-    background-color: #237882;
+    background-color: #ffd900;
     border: none;
     color: #fff;
     padding: 8px 12px;
@@ -264,7 +264,7 @@ nav {
     transition: background-color 0.3s ease;
 }
 .connect-btn:hover {
-    background-color: #237882;
+    background-color: #ffd900;
 }
 .write-post-container{
     width: 100%;
@@ -373,8 +373,8 @@ nav {
     --bg-color: #f6faf5;
     --text-color: #0b090f;
     --card-bg: #fff;
-    --nav-bg: #cdbbac;
-    --btn-color: #237882;
+    --nav-bg: #7e8cb9;
+    --btn-color: #ffd900;
 }
 body {
     background-color: var(--bg-color);
@@ -420,7 +420,7 @@ nav {
 
 .user-profile a{
     font-size: 12px;
-    color: #237882;
+    color: #7e8cb9;
     text-decoration: none;
 }
 .settings-menu-inner{
@@ -452,7 +452,7 @@ nav {
     align-items: center;
     justify-content: space-between;
     text-decoration: none;
-    color: #237882;
+    color: #7e8cb9;
 }
 
 
@@ -489,7 +489,7 @@ body.dark-mode {
     --card-bg: #1e1e1e;
     --nav-bg: #2c2c2c;
     --border-color: #333;
-    --accent-color: #237882;
+    --accent-color: #7e8cb9;
     background-color: var(--bg-color);
     color: var(--text-color);
 }
@@ -569,7 +569,7 @@ body.dark-mode .search-box input {
 }
 
 .header p {
-    color: #237882; /* Custom accent in light mode */
+    color: #7e8cb9; /* Custom accent in light mode */
     font-weight: 600;
 }
 
@@ -583,5 +583,5 @@ body.dark-mode .header p {
 }
 
 body.dark-mode .header a {
-    color: #237882;
+    color: #7e8cb9;
 }
