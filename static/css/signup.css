@@ -15,10 +15,11 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background: #f6faf5;
 }
 
 .main {
-    background: #efeee5;
+    background: #7e8cb9;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
