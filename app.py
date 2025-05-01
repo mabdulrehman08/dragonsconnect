@@ -1,132 +1,169 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+import json
+from os import environ as env
+from urllib.parse import quote_plus, urlencode
+from authlib.integrations.flask_client import OAuth
+from dotenv import find_dotenv, load_dotenv
+from flask import Flask, render_template, request, redirect, url_for, flash, session, jsonify
+from functools import wraps
+from werkzeug.exceptions import HTTPException
 from flask_sqlalchemy import SQLAlchemy
-from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, SubmitField
-from wtforms.validators import DataRequired, Email, Length
-from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
-from sqlalchemy import func  
-import bcrypt
+
+# Load environment variables from .env file
+ENV_FILE = find_dotenv()
+if ENV_FILE:
+    load_dotenv(ENV_FILE)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '27ad10a8fed2439ffed2d72cce95fd45'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:8marchismybirthday@localhost/dragonsconnect'
+app.secret_key = env.get("APP_SECRET_KEY", "27ad10a8fed2439ffed2d72cce95fd45")
+
+# Configure database - using your existing connection string
+app.config['SQLALCHEMY_DATABASE_URI'] = env.get("DATABASE_URL", 'postgresql://postgres:8marchismybirthday@localhost/dragonsconnect')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db = SQLAlchemy(app)
-login_manager = LoginManager(app)
-login_manager.login_view = 'login'
 
-# User Model
-class User(UserMixin, db.Model):
+# Configure Auth0
+oauth = OAuth(app)
+oauth.register(
+    "auth0",
+    client_id=env.get("AUTH0_CLIENT_ID"),
+    client_secret=env.get("AUTH0_CLIENT_SECRET"),
+    client_kwargs={
+        "scope": "openid profile email",
+    },
+    server_metadata_url=f'https://{env.get("AUTH0_DOMAIN")}/.well-known/openid-configuration'
+)
+
+# User Model - using your existing User model
+class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     email = db.Column(db.String(120), unique=True, nullable=False)
     username = db.Column(db.String(80), unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=False)
+    auth0_id = db.Column(db.String(120), unique=True, nullable=False)  # Add this field to your model
 
-# Forms
-class SignUpForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    username = StringField('Username', validators=[DataRequired(), Length(min=4, max=80)])
-    password = PasswordField('Password', validators=[DataRequired(), Length(min=6)])
-    submit = SubmitField('Sign Up')
+# Decorator to check if user is logged in
+def requires_auth(f):
+    @wraps(f)
+    def decorated(*args, **kwargs):
+        if 'profile' not in session:
+            # Redirect to Login page
+            return redirect('/login')
+        return f(*args, **kwargs)
+    return decorated
 
-class LoginForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Password', validators=[DataRequired()])
-    submit = SubmitField('Login')
-
-class ModifyForm(FlaskForm):
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    username = StringField('Username', validators=[DataRequired(), Length(min=4, max=80)])
-    password = PasswordField('Password')
-    submit = SubmitField('Update Profile')
-
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
+# Routes - preserving your existing routes but adding Auth0 login
 @app.route('/')
 def index():
     return render_template('index.html')
 
-@app.route('/signup', methods=['GET', 'POST'])
-def signup():
-    if current_user.is_authenticated:
-        return redirect(url_for('profile'))
-    form = SignUpForm()
-    if form.validate_on_submit():
-        hashed_password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')  # Store as string
-        user = User(email=form.email.data, username=form.username.data, password=hashed_password)
-        db.session.add(user)
-        try:
-            db.session.commit()
-            flash('Sign-up successful! Please log in.', 'success')
-            return redirect(url_for('login'))
-        except:
-            db.session.rollback()
-            flash('Email or username already exists.', 'error')
-    return render_template('signup.html', form=form)
-
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/login')
 def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('profile'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = User.query.filter(func.lower(User.email) == func.lower(form.email.data)).first()
-        if user:
-            if bcrypt.checkpw(form.password.data.encode('utf-8'), user.password.encode('utf-8')):
-                login_user(user)
-                flash('Logged in successfully!', 'success')
-                return redirect(url_for('profile'))
-            else:
-                flash('Password is incorrect.', 'error')
-        else:
-            flash('Email not found.', 'error')
-    return render_template('login.html', form=form)  
+    return oauth.auth0.authorize_redirect(
+        redirect_uri=url_for("callback", _external=True)
+    )
 
-@app.route('/profile')
-@login_required
-def profile():
-    return render_template('profile.html')
-
-@app.route('/modify', methods=['GET', 'POST'])
-@login_required
-def modify():
-    form = ModifyForm()
-    if form.validate_on_submit():
-        current_user.email = form.email.data
-        current_user.username = form.username.data
-        if form.password.data:
-            current_user.password = bcrypt.hashpw(form.password.data.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+@app.route('/callback')
+def callback():
+    # Process the callback from Auth0
+    token = oauth.auth0.authorize_access_token()
+    session["user"] = token
+    
+    # Get user profile information
+    userinfo = token.get('userinfo')
+    session['profile'] = {
+        'user_id': userinfo['sub'],
+        'email': userinfo.get('email', ''),
+        'name': userinfo.get('name', '')
+    }
+    
+    # Check if user exists in database, if not create them
+    auth0_id = userinfo['sub']
+    user = User.query.filter_by(auth0_id=auth0_id).first()
+    
+    if not user:
+        # Create a new user
+        username = userinfo.get('nickname', '').lower() or userinfo.get('name', '').lower().replace(' ', '_')
+        email = userinfo.get('email', '')
+        
+        # Make sure username is unique
+        base_username = username
+        count = 1
+        while User.query.filter_by(username=username).first():
+            username = f"{base_username}{count}"
+            count += 1
+        
+        user = User(auth0_id=auth0_id, email=email, username=username)
+        db.session.add(user)
+        
         try:
             db.session.commit()
-            flash('Profile updated successfully!', 'success')
-            return redirect(url_for('profile'))
-        except:
+            flash('Your account has been created!', 'success')
+        except Exception as e:
             db.session.rollback()
-            flash('Email or username already exists.', 'error')
-    return render_template('Modifying.html', form=form)
-
-@app.route('/delete', methods=['POST'])
-@login_required
-def delete():
-    db.session.delete(current_user)
-    db.session.commit()
-    logout_user()
-    flash('Your account has been deleted.', 'success')
-    return redirect(url_for('index'))
+            app.logger.error(f"Error creating user: {str(e)}")
+            flash('An error occurred during registration. Please try again.', 'error')
+    
+    # Store the user's database ID in the session for easy access
+    session['user_id'] = user.id
+    
+    return redirect('/profile')
 
 @app.route('/logout')
-@login_required
+@requires_auth
 def logout():
-    logout_user()
-    flash('Logged out successfully!', 'success')
-    return redirect(url_for('index')) 
+    # Clear session stored data
+    session.clear()
+    
+    # Redirect user to logout endpoint
+    params = {
+        'returnTo': url_for('index', _external=True),
+        'client_id': env.get('AUTH0_CLIENT_ID')
+    }
+    return redirect(f"https://{env.get('AUTH0_DOMAIN')}/v2/logout?{urlencode(params)}")
+
+@app.route('/profile')
+@requires_auth
+def profile():
+    # Get user info from database
+    user = User.query.get(session.get('user_id'))
+    
+    return render_template('profile.html', user=user)
+
+@app.route('/modify', methods=['GET', 'POST'])
+@requires_auth
+def modify():
+    user = User.query.get(session.get('user_id'))
+    
+    if request.method == 'POST':
+        # Get form data
+        new_username = request.form.get('username')
+        
+        # Validate username
+        if new_username != user.username:
+            existing_user = User.query.filter_by(username=new_username).first()
+            if existing_user:
+                flash('That username is already taken.', 'error')
+                return render_template('Modifying.html', user=user)  # Using your template name
+        
+        # Update user information
+        user.username = new_username
+        
+        try:
+            db.session.commit()
+            flash('Your profile has been updated!', 'success')
+            return redirect('/profile')
+        except Exception as e:
+            db.session.rollback()
+            app.logger.error(f"Error updating user: {str(e)}")
+            flash('An error occurred while updating your profile.', 'error')
+    
+    return render_template('Modifying.html', user=user)  # Using your template name
 
 @app.route('/services')
 def services():
     return render_template('services.html')
 
+with app.app_context():
+    db.create_all()
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=env.get('PORT', 5000))
