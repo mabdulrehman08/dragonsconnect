@@ -7,14 +7,11 @@ const addFriendModal = document.getElementById('add_friend_modal');
 // Get the modal content
 const modalContent = document.querySelector('.modal_content');
 
-// Get the close button
-const closeButton = document.getElementById('send_friend_request');
+// Get the friend name input
+const friendNameInput = document.getElementById('friend_name');
 
-// Get the search box
-const searchBox = document.getElementById('search_box');
-
-// Get the filter form
-const filterForm = document.getElementById('filter_form');
+// Get the friend email input
+const friendEmailInput = document.getElementById('friend_email');
 
 // Add event listener to the add friend button
 addFriendButton.addEventListener('click', () => {
@@ -22,67 +19,41 @@ addFriendButton.addEventListener('click', () => {
   addFriendModal.style.display = 'block';
 });
 
-// Add event listener to the close button
-closeButton.addEventListener('click', () => {
-  // Hide the add friend modal
-  addFriendModal.style.display = 'none';
-});
-
-// Add event listener to the search box
-searchBox.addEventListener('input', () => {
-  // Get the search value
-  const searchValue = searchBox.value.toLowerCase();
-
-  // Get the friends list
-  const friendsList = document.querySelector('.friends_list');
-
-  // Get the friends
-  const friends = friendsList.children;
-
-  // Loop through the friends
-  for (let i = 0; i < friends.length; i++) {
-    // Get the friend name
-    const friendName = friends[i].querySelector('h2').textContent.toLowerCase();
-
-    // Check if the friend name includes the search value
-    if (friendName.includes(searchValue)) {
-      // Show the friend
-      friends[i].style.display = 'block';
-    } else {
-      // Hide the friend
-      friends[i].style.display = 'none';
-    }
-  }
-});
-
-// Add event listener to the filter form
-filterForm.addEventListener('submit', (e) => {
+// Add event listener to the modal content
+modalContent.addEventListener('submit', (e) => {
   // Prevent the default form submission
   e.preventDefault();
 
-  // Get the filter values
-  const drexelClass = document.getElementById('drexel_class').value;
-  const interests = document.getElementById('interests').value;
-  const clubs = document.getElementById('clubs').value;
+  // Get the friend name and email
+  const friendName = friendNameInput.value;
+  const friendEmail = friendEmailInput.value;
+
+  // Create a new friend element
+  const newFriend = document.createElement('div');
+  newFriend.classList.add('friend');
+
+  // Create a new friend name element
+  const newFriendName = document.createElement('h2');
+  newFriendName.textContent = friendName;
+
+  // Create a new friend email element
+  const newFriendEmail = document.createElement('p');
+  newFriendEmail.textContent = friendEmail;
+
+  // Add the friend name and email to the new friend element
+  newFriend.appendChild(newFriendName);
+  newFriend.appendChild(newFriendEmail);
 
   // Get the friends list
   const friendsList = document.querySelector('.friends_list');
 
-  // Get the friends
-  const friends = friendsList.children;
+  // Add the new friend to the friends list
+  friendsList.appendChild(newFriend);
 
-  // Loop through the friends
-  for (let i = 0; i < friends.length; i++) {
-    // Get the friend details
-    const friendDetails = friends[i].querySelector('.friend_details');
+  // Hide the add friend modal
+  addFriendModal.style.display = 'none';
 
-    // Check if the friend details include the filter values
-    if (friendDetails.textContent.includes(drexelClass) && friendDetails.textContent.includes(interests) && friendDetails.textContent.includes(clubs)) {
-      // Show the friend
-      friends[i].style.display = 'block';
-    } else {
-      // Hide the friend
-      friends[i].style.display = 'none';
-    }
-  }
+  // Clear the friend name and email inputs
+  friendNameInput.value = '';
+  friendEmailInput.value = '';
 });
