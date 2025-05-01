@@ -12,26 +12,26 @@ body {
     font-weight: 400;
     font-style: bold;
     text-decoration: none;
-    background: url("images/back.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background:#7e8cb9;
 }
 
 .main {
-    background: #efeee5;
+    background: #f6faf5;
     border-radius: 15px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
     padding: 10px 20px;
     position: fixed;
-    top: 110px; right: 30px;
+    top: 70px; 
     transition: transform 0.2s;
     width: 500px;
     text-align: center;
 }
 
 .main h2 {
-    color: #364042;
+    color: #0b090f;
 }
 
 label {
@@ -40,7 +40,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #364042;
+    color: #0b090f;
     font-weight: bold;
 }
 
@@ -66,7 +66,7 @@ button[type="submit"] {
     border: none;
     color: white;
     cursor: pointer;
-    background-color: #FFDF00;
+    background-color: #ffd900;
     width: 100%;
     font-family: "Space Mono", serif;
     font-size: 16px;

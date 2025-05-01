@@ -1,192 +1,190 @@
-
-
 body {
-    font-family: 'Space Mono', monospace;
-    background-color: #f0f0f0;
-  }
-  
-  #top_bar {
-    background-color: #002B7F; 
-    color: #fff;
-    padding: 1em;
-    text-align: center;
-  }
-  
-  #greeting {
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-  }
-  
-  #search_form {
-    display: inline-block;
-    margin-left: 1em;
-  }
-  
-  #search_box {
-    padding: 0.5em;
-    border: none;
-    border-radius: 0.5em;
-    width: 20em;
-  }
-  
-  #profile_img {
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    margin-left: 1em;
-  }
-  
-  .page_container {
-    max-width: 40em;
-    margin: 2em auto;
-    padding: 1em;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 0.5em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .friends_header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-  
-  .friends_header h1 {
-    margin: 0;
-    color: #002B7F; 
-  }
-  
-  #add_friend_button {
-    background-color: #FFC080; 
-    color: #002B7F; 
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-  }
-  
-  #add_friend_button:hover {
-    background-color: #FFA07A; 
-  }
-  
-  .friends_list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .friend {
-    display: flex;
-    align-items: center;
-    padding: 1em;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .friend img {
-    width: 2em;
-    height: 2em;
-    border-radius: 50%;
-    margin-right: 1em;
-  }
-  
-  .friend_name {
-    font-weight: bold;
-    margin-right: 1em;
-    color: #002B7F; 
-  }
-  
-  .remove_friend_button {
-    background-color: #e74c3c;
-    color: #fff;
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-  }
-  
-  .remove_friend_button:hover {
-    background-color: #c0392b;
-  }
-  
-  #add_friend_modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 1;
-  }
-  
-  #add_friend_modal .modal_content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 2em;
-    border: 1px solid #ddd;
-    border-radius: 0.5em;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  #add_friend_modal .modal_content h2 {
-    margin-top: 0;
-    color: #002B7F; 
-  }
-  
-  #add_friend_form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #add_friend_form label {
-    margin-bottom: 0.5em;
-  }
-  
-  #add_friend_form input {
-    padding: 0.5em;
-    border: none;
-    border-radius: 0.5em;
-    width: 20em;
-    margin-bottom: 1em;
-  }
-  
-  #send_friend_request {
-    background-color: #FFC080; 
-    color: #002B7F; 
-    padding: 0.5em 1em;
-    border: none;
-    border-radius: 0.5em;
-    cursor: pointer;
-  }
-  
-  #send_friend_request:hover {
-    background-color: #FFA07A; 
-  }
+  font-family: 'Space Mono', monospace;
+  background-color: #f0f0f0;
+}
 
-  .filters {
-    margin-top: 20px;
-  }
-  
-  .filters form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-  }
-  
-  .filters label {
-    margin-right: 10px;
-  }
-  
-  .filters select {
-    margin-right: 20px;
-  }
-  
-  .filters button {
-    margin-top: 10px;
-  }
+#top_bar {
+  background-color: #002B7F; 
+  color: #fff;
+  padding: 1em;
+  text-align: center;
+}
+
+#greeting {
+  font-size: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+#search_form {
+  display: inline-block;
+  margin-left: 1em;
+}
+
+#search_box {
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.5em;
+  width: 20em;
+}
+
+#profile_img {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  margin-left: 1em;
+}
+
+.page_container {
+  max-width: 40em;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 0.5em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.friends_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1em;
+}
+
+.friends_header h1 {
+  margin: 0;
+  color: #002B7F; 
+}
+
+#add_friend_button {
+  background-color: #FFC080; 
+  color: #002B7F; 
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+#add_friend_button:hover {
+  background-color: #FFA07A; 
+}
+
+.friends_list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.friend {
+  display: flex;
+  align-items: center;
+  padding: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.friend img {
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  margin-right: 1em;
+}
+
+.friend_name {
+  font-weight: bold;
+  margin-right: 1em;
+  color: #002B7F; 
+}
+
+.remove_friend_button {
+  background-color: #e74c3c;
+  color: #fff;
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+.remove_friend_button:hover {
+  background-color: #c0392b;
+}
+
+#add_friend_modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+#add_friend_modal .modal_content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 2em;
+  border: 1px solid #ddd;
+  border-radius: 0.5em;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#add_friend_modal .modal_content h2 {
+  margin-top: 0;
+  color: #002B7F; 
+}
+
+#add_friend_form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#add_friend_form label {
+  margin-bottom: 0.5em;
+}
+
+#add_friend_form input {
+  padding: 0.5em;
+  border: none;
+  border-radius: 0.5em;
+  width: 20em;
+  margin-bottom: 1em;
+}
+
+#send_friend_request {
+  background-color: #FFC080; 
+  color: #002B7F; 
+  padding: 0.5em 1em;
+  border: none;
+  border-radius: 0.5em;
+  cursor: pointer;
+}
+
+#send_friend_request:hover {
+  background-color: #FFA07A; 
+}
+
+.filters {
+  margin-top: 20px;
+}
+
+.filters form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.filters label {
+  margin-right: 10px;
+}
+
+.filters select {
+  margin-right: 20px;
+}
+
+.filters button {
+  margin-top: 10px;
+}
