@@ -12,7 +12,6 @@ body {
     font-weight: 400;
     font-style: bold;
     text-decoration: none;
-    background: url("images/back.jpg");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -31,7 +30,7 @@ body {
 }
 
 .main h2 {
-    color: #364042;
+    color: #0b090f;
 }
 
 label {
@@ -40,7 +39,7 @@ label {
     margin-top: 10px;
     margin-bottom: 5px;
     text-align: left;
-    color: #364042;
+    color: #0b090f;
     font-weight: bold;
 }
 
@@ -66,7 +65,7 @@ button[type="submit"] {
     border: none;
     color: white;
     cursor: pointer;
-    background-color: #FFDF00;
+    background-color: #ffd900;
     width: 100%;
     font-family: "Space Mono", serif;
     font-size: 16px;

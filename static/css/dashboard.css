@@ -98,7 +98,7 @@ nav {
     background-color: var(--card-bg);
     padding: 20px;
     border-radius: 4px;
-    color: #626262
+    color: #626262;
 }
 .main-content{
     flex-basis: 47%;
