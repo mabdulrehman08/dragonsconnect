@@ -6,4 +6,25 @@ https://youtu.be/Z1RJmh_OqeA
 https://flask.palletsprojects.com/en/stable/tutorial/layout/
 fixed all new files / folders
 27ad10a8fed2439ffed2d72cce95fd45 - secret key for database 
-
+fixed the directory this is our current dircetory 
+DRAGON...
+├── flaskr/                  # Flask app package
+│   ├── __init__.py          # Auth Blueprint (login/register/logout)
+│   ├── db.py                # Database connection and initialization
+│   └── schema.sql           # Database schema (user and post tables)
+├── instance/                # For configs, database
+├── static/                  # Static assets
+│   ├── css/
+│   ├── images/
+│   └── js/
+├── templates/               # HTML templates
+│   ├── auth/                # Added based on auth routes
+│   │   ├── login.html
+│   │   └── register.html
+├── .env                     # Environment variables (assumed renamed from env)
+├── app.py                   # Likely redundant (to be confirmed)
+├── auth.py                  # Likely redundant (to be confirmed)
+├── server.py                # Server entry point
+├── README.md                # Documentation
+├── requirements.txt         # Dependencies
+└── venv/                    # Virtual environment
