@@ -1,132 +1,88 @@
-// friendsList.js
+// Get the add friend button
+const addFriendButton = document.getElementById('add_friend_button');
 
-// Sample friends data
-const friends = [
-  { name: 'Joe Smchoe', email: 'joe.smchoe@drexel.edu' },
-  { name: 'MJ Parker', email: 'mj.parker@drexel.edu' },
-  { name: 'Jess Ica', email: 'jess.ica@drexel.edu' },
-];
+// Get the add friend modal
+const addFriendModal = document.getElementById('add_friend_modal');
 
-// Populate friends list
-const friendsList = document.querySelector('.friends_list');
-friends.forEach((friend) => {
-  const friendHTML = `
-    <div class="friend">
-      <img src="../static/images/joe.jpg" alt="Friend">
-      <span class="friend_name">${friend.name}</span>
-      <span class="friend_email">${friend.email}</span>
-      <button class="remove_friend_button">Remove Friend</button>
-    </div>
-  `;
-  friendsList.insertAdjacentHTML('beforeend', friendHTML);
-});
+// Get the modal content
+const modalContent = document.querySelector('.modal_content');
 
-// Add event listener to "Add Friend" button
-const addFriendButton = document.querySelector('#add_friend_button');
+// Get the close button
+const closeButton = document.getElementById('send_friend_request');
+
+// Get the search box
+const searchBox = document.getElementById('search_box');
+
+// Get the filter form
+const filterForm = document.getElementById('filter_form');
+
+// Add event listener to the add friend button
 addFriendButton.addEventListener('click', () => {
-  const addFriendModal = document.querySelector('#add_friend_modal');
+  // Show the add friend modal
   addFriendModal.style.display = 'block';
 });
 
-// Add event listener to "Send Friend Request" button
-const sendFriendRequestButton = document.querySelector('#send_friend_request');
-sendFriendRequestButton.addEventListener('click', () => {
-  const friendNameInput = document.querySelector('#friend_name');
-  const friendEmailInput = document.querySelector('#friend_email');
-  const friendName = friendNameInput.value.trim();
-  const friendEmail = friendEmailInput.value.trim();
-
-  // Create a new friend object
-  const newFriend = { name: friendName, email: friendEmail };
-
-  // Add new friend to friends list
-  const newFriendHTML = `
-    <div class="friend">
-      <img src="../static/images/jess.jpg" alt="Friend">
-      <span class="friend_name">${newFriend.name}</span>
-      <span class="friend_email">${newFriend.email}</span>
-      <button class="remove_friend_button">Remove Friend</button>
-    </div>
-  `;
-  friendsList.insertAdjacentHTML('beforeend', newFriendHTML);
-
-  // Clear input fields
-  friendNameInput.value = '';
-  friendEmailInput.value = '';
-
-  // Close add friend modal
-  const addFriendModal = document.querySelector('#add_friend_modal');
+// Add event listener to the close button
+closeButton.addEventListener('click', () => {
+  // Hide the add friend modal
   addFriendModal.style.display = 'none';
 });
 
-// Add an event listener to each remove friend button
-friendsList.addEventListener('click', (e) => {
-  if (e.target.classList.contains('remove_friend_button')) {
-    // Get the parent element of the button (the friend element)
-    const friendElement = e.target.parentElement;
-    // Remove the friend element from the friends list
-    friendsList.removeChild(friendElement);
+// Add event listener to the search box
+searchBox.addEventListener('input', () => {
+  // Get the search value
+  const searchValue = searchBox.value.toLowerCase();
+
+  // Get the friends list
+  const friendsList = document.querySelector('.friends_list');
+
+  // Get the friends
+  const friends = friendsList.children;
+
+  // Loop through the friends
+  for (let i = 0; i < friends.length; i++) {
+    // Get the friend name
+    const friendName = friends[i].querySelector('h2').textContent.toLowerCase();
+
+    // Check if the friend name includes the search value
+    if (friendName.includes(searchValue)) {
+      // Show the friend
+      friends[i].style.display = 'block';
+    } else {
+      // Hide the friend
+      friends[i].style.display = 'none';
+    }
   }
 });
 
-// Get the filter form and buttons
-const filterForm = document.getElementById('filter_form');
-const applyFiltersButton = document.getElementById('apply_filters');
-const clearFiltersButton = document.getElementById('clear_filters');
+// Add event listener to the filter form
+filterForm.addEventListener('submit', (e) => {
+  // Prevent the default form submission
+  e.preventDefault();
 
-// Get the friends list container
-const friendsListContainer = document.querySelector('.friends_list');
-
-// Define the filtering logic
-function applyFilters() {
+  // Get the filter values
   const drexelClass = document.getElementById('drexel_class').value;
-  const interests = Array.from(document.getElementById('interests').selectedOptions).map(option => option.value);
-  const clubs = Array.from(document.getElementById('clubs').selectedOptions).map(option => option.value);
+  const interests = document.getElementById('interests').value;
+  const clubs = document.getElementById('clubs').value;
 
-  // Filter the friends list based on the selected filters
-  const filteredFriends = friendsList.filter(friend => {
-    // Filter by Drexel graduating class
-    if (drexelClass && friend.drexelClass !== drexelClass) return false;
+  // Get the friends list
+  const friendsList = document.querySelector('.friends_list');
 
-    // Filter by interests
-    if (interests.length > 0 && !interests.some(interest => friend.interests.includes(interest))) return false;
+  // Get the friends
+  const friends = friendsList.children;
 
-    // Filter by clubs
-    if (clubs.length > 0 && !clubs.some(club => friend.clubs.includes(club))) return false;
+  // Loop through the friends
+  for (let i = 0; i < friends.length; i++) {
+    // Get the friend details
+    const friendDetails = friends[i].querySelector('.friend_details');
 
-    return true;
-  });
-
-  // Update the friends list container with the filtered friends
-  friendsListContainer.innerHTML = '';
-  filteredFriends.forEach(friend => {
-    const friendHTML = `
-      <div>
-        <h2>${friend.name}</h2>
-        <p>Drexel Class: ${friend.drexelClass}</p>
-        <p>Interests: ${friend.interests.join(', ')}</p>
-        <p>Clubs: ${friend.clubs.join(', ')}</p>
-      </div>
-    `;
-    friendsListContainer.insertAdjacentHTML('beforeend', friendHTML);
-  });
-}
-
-// Define the clear filters logic
-function clearFilters() {
-  // Reset the filter form
-  filterForm.reset();
-}
-  // Update the friends list container with the original friends list
-friendsListContainer.innerHTML = '';
-friendsList.forEach(friend => {
-  const friendHTML = `
-    <div>
-      <h2>${friend.name}</h2>
-      <p>Drexel Class: ${friend.drexelClass}</p>
-      <p>Interests: ${friend.interests.join(', ')}</p>
-      <p>Clubs: ${friend.clubs.join(', ')}</p>
-    </div>
-  `;
-  friendsListContainer.insertAdjacentHTML('beforeend', friendHTML);
+    // Check if the friend details include the filter values
+    if (friendDetails.textContent.includes(drexelClass) && friendDetails.textContent.includes(interests) && friendDetails.textContent.includes(clubs)) {
+      // Show the friend
+      friends[i].style.display = 'block';
+    } else {
+      // Hide the friend
+      friends[i].style.display = 'none';
+    }
+  }
 });
