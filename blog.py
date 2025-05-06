@@ -1,5 +1,4 @@
-# flaskr/blog.py
-from flask import Blueprint, flash, g, redirect, render_template, request, url_for, jsonify
+from flask import Blueprint, flash, g, redirect, render_template, request, url_for
 from werkzeug.exceptions import abort
 from flaskr.db import get_db
 from flaskr import requires_auth
@@ -31,15 +30,10 @@ def create():
             flash(error)
         else:
             db = get_db()
-            # Use user_id from token payload or session
-            user_id = session.get('user_id')
-            if not user_id:
-                return jsonify({'message': 'User not authenticated'}), 401
-
             db.execute(
                 'INSERT INTO post (title, body, author_id)'
                 ' VALUES (?, ?, ?)',
-                (title, body, user_id)
+                (title, body, g.user['id'])
             )
             db.commit()
             return redirect(url_for('blog.index'))
@@ -57,10 +51,8 @@ def get_post(id, check_author=True):
     if post is None:
         abort(404, f"Post id {id} doesn't exist.")
 
-    if check_author:
-        user_id = session.get('user_id')
-        if user_id and post['author_id'] != user_id:
-            abort(403)
+    if check_author and post['author_id'] != g.user['id']:
+        abort(403)
 
     return post
 

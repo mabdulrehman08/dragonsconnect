@@ -1,4 +1,6 @@
-# server.py
+#htis is the enetry point for the app
+
+
 from flaskr import create_app
 
 app = create_app()
