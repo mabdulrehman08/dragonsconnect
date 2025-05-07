@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, url_for
 from werkzeug.exceptions import abort
-from flaskr.db import get_db
-from flaskr import requires_auth
+from dragonsconnect.db import get_db
+from dragonsconnect import requires_auth
 
 bp = Blueprint('blog', __name__)
 

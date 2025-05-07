@@ -1,8 +1,8 @@
 import os
 from flask import Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for, abort, jsonify
-from flaskr.db import get_db, init_app
-from flaskr.blog import bp as blog_bp
-from flaskr.profile import bp as profile_bp
+from dragonsconnect.db import get_db, init_app
+#from dragonsconnect.blog import bp as blog_bp #app doesn't run unless we do this later
+#from dragonsconnect.profile import bp as profile_bp #profile.py is empty. why is this here
 from dotenv import load_dotenv
 from functools import wraps
 import jwt
@@ -153,7 +153,9 @@ def create_app():
         pass
 
     init_app(app)
-    app.register_blueprint(bp)  # auth Blueprint
-    app.register_blueprint(blog_bp)  # blog Blueprint
-    app.register_blueprint(profile_bp)  # profile Blueprint
+    from . import blog
+    from . import auth
+    app.register_blueprint(auth.bp)  # auth Blueprint
+    app.register_blueprint(blog.bp)  # blog Blueprint
+    #app.register_blueprint(profile_bp)  # profile Blueprint
     return app

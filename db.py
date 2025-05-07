@@ -1,6 +1,7 @@
 import sqlite3
 import click
 from flask import current_app, g
+from datetime import datetime
 
 def get_db():
     if 'db' not in g:
@@ -25,6 +26,10 @@ def init_db():
 def init_db_command():
     init_db()
     click.echo('Initialized the database.')
+
+sqlite3.register_converter(
+    "timestamp", lambda v: datetime.fromisoformat(v.decode())
+)
 
 def init_app(app):
     app.teardown_appcontext(close_db)
