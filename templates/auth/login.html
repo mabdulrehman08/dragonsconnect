@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - DragonsConnect</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+</head>
+<body>
+    <div class="main">
+        <h1>DragonsConnect</h1>
+        <h3>Log In</h3>
+
+        <!-- Display flash messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <p class="{{ category }}">{{ message }}</p>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        <!-- Use Flask-WTF form -->
+        <form method="POST">
+            {{ form.hidden_tag() }}
+            <label for="email">Email:</label>
+            {{ form.email(id="email", placeholder="Enter your Email", required=True) }}
+
+            <label for="password">Password:</label>
+            {{ form.password(id="password", placeholder="Enter your Password", required=True) }}
+
+            <div class="wrap">
+                {{ form.submit(class="btn") }}
+            </div>
+        </form>
+
+        <p>Not registered?
+            <a href="{{ url_for('signup') }}" style="text-decoration: none;">
+                Create an account
+            </a>
+        </p>
+    </div>
+</body>
+</html>
