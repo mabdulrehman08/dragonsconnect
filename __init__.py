@@ -1,6 +1,6 @@
 import os
 from flask import Flask, Blueprint, flash, g, redirect, render_template, request, session, url_for, abort, jsonify
-from dragonsconnect.db import get_db, init_app
+from .db import get_db, init_app
 #from dragonsconnect.blog import bp as blog_bp #app doesn't run unless we do this later
 #from dragonsconnect.profile import bp as profile_bp #profile.py is empty. why is this here
 from dotenv import load_dotenv
